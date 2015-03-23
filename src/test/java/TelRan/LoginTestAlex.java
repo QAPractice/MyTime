@@ -1,4 +1,5 @@
 package TelRan;
+/*555*/
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -11,7 +12,7 @@ import java.util.concurrent.TimeUnit;
 import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.FileAssert.fail;
 
-public class LoginTest {
+public class LoginTestAlex {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
