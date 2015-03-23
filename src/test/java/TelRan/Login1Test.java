@@ -1,4 +1,11 @@
+
+
+/**
+ * Created by Iakov on 3/23/2015.
+ */
+
 package TelRan;
+
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,10 +15,10 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
+import static org.testng.Assert.fail;
 import static org.testng.AssertJUnit.assertTrue;
-import static org.testng.FileAssert.fail;
 
-public class LoginTest {
+public class Login1Test {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
@@ -25,7 +32,7 @@ public class LoginTest {
     }
 
     @Test
-    public void testTC1338LoginThroughYahooAcc() throws Exception {
+    public void testLoginGood_TC1338() throws Exception {
         driver.get(baseUrl + "/");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
@@ -113,3 +120,4 @@ public class LoginTest {
         }
     }
 }
+
