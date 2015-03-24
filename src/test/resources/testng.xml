@@ -3,7 +3,7 @@
 <suite name="Tests" verbose="5">
   <test name="Test1">
     <classes>
-      <class name="TelRan.SampleTestNgTest"/>
+      <class name="TelRan.LoginTest"/>
     </classes>
   </test>  
 </suite>
