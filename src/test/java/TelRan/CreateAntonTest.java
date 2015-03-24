@@ -3,9 +3,6 @@
  */
 package TelRan;
 
-import java.util.Calendar;
-import java.util.regex.Pattern;
-import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.Select;
@@ -13,6 +10,9 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
+import static org.apache.commons.lang3.RandomStringUtils.*;
 import static org.testng.Assert.fail;
 import static org.testng.AssertJUnit.assertTrue;
 
@@ -21,7 +21,7 @@ public class CreateAntonTest {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    private CharSequence CalendarName;
+    private String calendarName;
 
     @BeforeTest
     public void setUp() throws Exception {
@@ -39,8 +39,8 @@ public class CreateAntonTest {
         }
 
         driver.findElement(By.xpath("//form[@id='form2']/div/button")).click();
-        // ERROR: Caught exception [ERROR: Unsupported command [getEval |  | ]]
-        System.out.println("New calendar Name " + CalendarName);
+       calendarName = random(7);
+        System.out.println("New calendar Name " + calendarName);
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.id("mattName"))) break; } catch (Exception e) {}
@@ -49,7 +49,7 @@ public class CreateAntonTest {
 
         driver.findElement(By.id("mattName")).click();
         driver.findElement(By.id("mattName")).clear();
-        driver.findElement(By.id("mattName")).sendKeys(CalendarName);
+        driver.findElement(By.id("mattName")).sendKeys(calendarName);
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.id("timeSlot"))) break; } catch (Exception e) {}
@@ -82,11 +82,11 @@ public class CreateAntonTest {
         }
 
         try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(),'" + CalendarName + "')]")));
+            assertTrue(isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(),'" + calendarName + "')]")));
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-        System.out.println("Calendar " + CalendarName + " was created");
+        System.out.println("Calendar " + calendarName + " was created");
     }
 
     @AfterTest
