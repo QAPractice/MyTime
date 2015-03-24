@@ -16,7 +16,7 @@ package TelRan;
         import static org.testng.Assert.fail;
         import static org.testng.AssertJUnit.assertTrue;
 
-public class LoginPositiveAnton {
+public class LoginAntonTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
