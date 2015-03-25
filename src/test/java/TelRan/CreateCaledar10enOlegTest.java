@@ -13,7 +13,7 @@ package TelRan;
     import static org.testng.Assert.fail;
     import static org.testng.AssertJUnit.assertTrue;
 
-public class CreateCaledar10enOleg {
+public class CreateCaledar10enOlegTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
