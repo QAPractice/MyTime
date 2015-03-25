@@ -28,7 +28,7 @@ public class CreateCaledar10enOleg {
 
     @Test
     public void testCreateCaledar10enOleg_TC1342() throws Exception {
-        driver.get(baseUrl + "/myavailabletime/home?name=romankotlr%40gmail.com&password=babylon1974");
+        driver.get(baseUrl + "/myavailabletime/home?name=oshil3321%40gmail.com&password=3321ol");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.xpath("//button[@onclick=\"form2.action='dom'\"]"))) break; } catch (Exception e) {}
@@ -36,6 +36,12 @@ public class CreateCaledar10enOleg {
         }
 
         driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
+        for (int second = 0;; second++) {
+            if (second >= 60) fail("timeout");
+            try { if (isElementPresent(By.id("mattName"))) break; } catch (Exception e) {}
+            Thread.sleep(1000);
+        }
+
         driver.findElement(By.id("mattName")).clear();
         driver.findElement(By.id("mattName")).sendKeys("one two three four five six seven eight nine ten");
         for (int second = 0;; second++) {
@@ -61,13 +67,6 @@ public class CreateCaledar10enOleg {
             Thread.sleep(1000);
         }
 
-        try {
-            assertTrue(isElementPresent(By.xpath("//*[contains(text(),\"one two three four five six seven eight nine ten\")]")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        // ERROR: Caught exception [unknown command []]
-        // ERROR: Caught exception [unknown command []]
     }
 
     @AfterTest
@@ -112,4 +111,3 @@ public class CreateCaledar10enOleg {
         }
     }
 }
-
