@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
 
 import TelRan.pages.HomePage;
 
-public class SampleTestNgTest extends TestNgTestBase {
+public class
+        SampleTestNgTest extends TestNgTestBase {
 
   private HomePage homepage;
 
