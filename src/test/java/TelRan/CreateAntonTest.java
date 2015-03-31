@@ -31,7 +31,9 @@ public class CreateAntonTest {
     }
 
     @Test
+
     public void testCreateCalendarPositiveAnton() throws Exception {
+        driver.get(baseUrl + "/myavailabletime/home?name=antishipul%40gmail.com&password=a888888&mergedimage_2=");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.xpath("//form[@id='form2']/div/button"))) break; } catch (Exception e) {}
