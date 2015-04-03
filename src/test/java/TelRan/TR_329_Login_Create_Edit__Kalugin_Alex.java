@@ -114,16 +114,15 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             Thread.sleep(1000);
         }
         System.out.println("Where am I N1?");
+
         new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("1 hour");
-        System.out.println("Where am I N2?");
         driver.findElement(By.id("saveMatt")).click();
-        System.out.println("Where am I N3?");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
-        System.out.println("Where am I N4?");
+
         try {
             assertTrue(isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]")));
         } catch (Error e) {
@@ -137,7 +136,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         }
 
         System.out.println("Presses on 'Edit' button under Calendar '" + Name + "' link.");
-        // ERROR: Caught exception [ERROR: Unsupported command [clickAt | //*[@id='placetable']//tr[1]/td[contains(text(), '${Name}')]/../../tr[3]/td[2]/input | ]]
+        driver.findElement(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]/../../tr[3]/td[2]/input")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.id("timeSlot"))) break; } catch (Exception e) {}
@@ -164,6 +163,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             Thread.sleep(1000);
         }
 
+        driver.findElement(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]/../../tr[3]/td[1]/input")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.id("mattTable"))) break; } catch (Exception e) {}
@@ -189,7 +189,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             Thread.sleep(1000);
         }
 
-        // ERROR: Caught exception [ERROR: Unsupported command [clickAt | //*[@id='placetable']//tr[1]/td[contains(text(), '${Name}')]/../../tr[3]/td[8]/input | ]]
+        driver.findElement(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]/../../tr[3]/td[8]/input")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (!isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]"))) break; } catch (Exception e) {}
