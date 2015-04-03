@@ -25,6 +25,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
     private StringBuffer verificationErrors = new StringBuffer();
     private String Name ;
 
+
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
