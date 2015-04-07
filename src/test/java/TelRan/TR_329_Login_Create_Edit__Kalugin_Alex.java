@@ -13,7 +13,7 @@ import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.commons.lang3.RandomStringUtils.random;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 import static org.testng.AssertJUnit.assertFalse;
 import static org.testng.AssertJUnit.assertTrue;
 import static org.testng.FileAssert.fail;
@@ -33,11 +33,11 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
     }
 
 // *******************************************************************************************************
-                          //  First test case: LOGIN to myAvailableTime
+    //  First test case: Tests if user is able to LOGIN to myAvailableTime(through Yahoo account)
 // *******************************************************************************************************
 
-     @Test
-    public void testTC1338LoginThroughYahooAcc() throws Exception {
+    @Test
+    public void testTC1338LoginToAcc() throws Exception {
         driver.get(baseUrl + "/");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
@@ -84,7 +84,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
     }
 
 // *******************************************************************************************************
-                   //  Second test case: Create-Edit Calendar
+    //  Second test case: Tests if user is able to Create Calendar with one letter in name.
 // *******************************************************************************************************
 
     @Test
@@ -97,29 +97,41 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         }
 */
         driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
-        for (int second = 0;; second++) {
+        for (int second = 0; ; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("mattName"))) break; } catch (Exception e) {}
+            try {
+                if (isElementPresent(By.id("mattName"))) break;
+            } catch (Exception e) {
+            }
             Thread.sleep(1000);
         }
 
-        Name = random(1);
+        Name = randomAlphabetic(1);
+        //Name = random(1);
         System.out.println("Generated name - " + Name);
         driver.findElement(By.id("mattName")).click();
         driver.findElement(By.id("mattName")).clear();
         driver.findElement(By.id("mattName")).sendKeys(Name);
-        for (int second = 0;; second++) {
+        for (int second = 0; ; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("timeSlot"))) break; } catch (Exception e) {}
+            try {
+                if (isElementPresent(By.id("timeSlot"))) break;
+            } catch (Exception e) {
+            }
             Thread.sleep(1000);
         }
         System.out.println("Where am I N1?");
 
+        new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("30 min");
         new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("1 hour");
         driver.findElement(By.id("saveMatt")).click();
-        for (int second = 0;; second++) {
+        for (int second = 0; ; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]"))) break; } catch (Exception e) {}
+            try {
+                if (isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]")))
+                    break;
+            } catch (Exception e) {
+            }
             Thread.sleep(1000);
         }
 
@@ -129,11 +141,22 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             verificationErrors.append(e.toString());
         }
         System.out.println("Calendar '" + Name + "' with 1 hour slot was created");
-        for (int second = 0;; second++) {
+        for (int second = 0; ; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]/../../tr[3]/td[2]/input"))) break; } catch (Exception e) {}
+            try {
+                if (isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]/../../tr[3]/td[2]/input")))
+                    break;
+            } catch (Exception e) {
+            }
             Thread.sleep(1000);
         }
+
+    }
+    // *******************************************************************************************************
+    //  Third test case: Tests if user is able to Edit Calendar and change time slot to 30 min.
+// *******************************************************************************************************
+    @Test
+    public void testTC1383EditCalendar() throws Exception {
 
         System.out.println("Presses on 'Edit' button under Calendar '" + Name + "' link.");
         driver.findElement(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(), '" + Name + "')]/../../tr[3]/td[2]/input")).click();
@@ -144,7 +167,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         }
 
         assertFalse(isElementPresent(By.id("td24s0")));
-        System.out.println("Verifiiyint that previous slot is for 1 hour");
+        System.out.println("Verifying that previous slot is for 1 hour");
         new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("30 min");
         System.out.println("Changing time slot is to 30 min");
         for (int second = 0;; second++) {
@@ -230,7 +253,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         }
     }
 
-        private String closeAlertAndGetItsText() {
+    private String closeAlertAndGetItsText() {
         try {
             Alert alert = driver.switchTo().alert();
             String alertText = alert.getText();
