@@ -18,6 +18,7 @@ public class EditStartEndDateOlegTest {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    CreateCaledar10enOlegTest createCaledar10enOlegTest  = new CreateCaledar10enOlegTest ();
 
     @BeforeTest
     public void setUp() throws Exception {
@@ -28,7 +29,7 @@ public class EditStartEndDateOlegTest {
 
     @Test
     public void testEditStartEndDateOleg_TC1382() throws Exception {
-        driver.get(baseUrl + "/myavailabletime/saveMatt?mattName=one+two+three+four+five+six+seven+eight+nine+ten&startDate=23.02.2015&endDate=22.03.2015&timeSlot=60&table=one+two+three+four+five+six+seven+eight+nine+ten");
+        createCaledar10enOlegTest.testCreateCaledar10enOleg_TC1342();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.xpath("//*[contains(text(),\"one two three four five six seven eight nine ten\")]"))) break; } catch (Exception e) {}
@@ -98,6 +99,7 @@ public class EditStartEndDateOlegTest {
 
         driver.findElement(By.id("next")).click();
     }
+
 
     @AfterTest
     public void tearDown() throws Exception {
