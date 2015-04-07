@@ -18,6 +18,7 @@ public class CreateCaledar10enOlegTest {
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    LoginOlegTest loginOlegTest = new LoginOlegTest();
 
     @BeforeTest
     public void setUp() throws Exception {
@@ -28,7 +29,7 @@ public class CreateCaledar10enOlegTest {
 
     @Test
     public void testCreateCaledar10enOleg_TC1342() throws Exception {
-        driver.get(baseUrl + "/myavailabletime/home?name=oshil3321%40gmail.com&password=3321ol");
+        loginOlegTest.testLoginOlegTest_TC1338();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.xpath("//button[@onclick=\"form2.action='dom'\"]"))) break; } catch (Exception e) {}
