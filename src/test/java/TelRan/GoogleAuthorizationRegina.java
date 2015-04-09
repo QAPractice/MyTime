@@ -13,8 +13,6 @@ package TelRan;
 
 public class GoogleAuthorizationRegina {
 
-
-    public class GoogleAuthorization {
         private WebDriver driver;
         private String baseUrl;
         private boolean acceptNextAlert = true;
@@ -119,6 +117,5 @@ public class GoogleAuthorizationRegina {
                 acceptNextAlert = true;
             }
         }
-    }
 
 }
