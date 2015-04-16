@@ -11,7 +11,7 @@ package TelRan;
         import static org.testng.Assert.assertTrue;
         import static org.testng.Assert.fail;
 
-public class GoogleAuthorizationRegina {
+public class GoogleAuthorizationReginaTest {
 
         private WebDriver driver;
         private String baseUrl;

@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.*;
 import static org.testng.Assert.fail;
 
-public class LoginEmptyFieldsRegina {
+public class LoginEmptyFieldsReginaTest {
         private WebDriver driver;
         private String baseUrl;
         private boolean acceptNextAlert = true;

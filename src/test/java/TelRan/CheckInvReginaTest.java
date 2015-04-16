@@ -13,7 +13,7 @@ import static org.testng.Assert.assertFalse;
 import static org.testng.Assert.assertTrue;
 import static org.testng.Assert.fail;
 
-public class CheckInvRegina {
+public class CheckInvReginaTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
