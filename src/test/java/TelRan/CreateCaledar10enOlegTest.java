@@ -1,74 +1,73 @@
 package TelRan;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+    import java.util.concurrent.TimeUnit;
+    import org.testng.*;
+    import org.openqa.selenium.*;
+    import org.openqa.selenium.firefox.FirefoxDriver;
+    import org.testng.annotations.AfterTest;
+    import org.testng.annotations.BeforeClass;
+    import org.testng.annotations.BeforeTest;
+    import org.testng.annotations.Test;
 
-import java.util.concurrent.TimeUnit;
+    import static org.testng.Assert.assertEquals;
+    import static org.testng.Assert.fail;
+    import static org.testng.AssertJUnit.assertTrue;
 
-import static org.testng.AssertJUnit.assertTrue;
-import static org.testng.FileAssert.fail;
-
-public class LoginTest {
+public class CreateCaledar10enOlegTest {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
+    LoginOlegTest loginOlegTest = new LoginOlegTest();
 
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://myavailabletime.com/";
+        baseUrl = "http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
 
     @Test
-    public void testTC1338LoginThroughYahooAcc() throws Exception {
-        driver.get(baseUrl + "/");
+    public void testCreateCaledar10enOleg_TC1342() throws Exception {
+        loginOlegTest.testLoginOlegTest_TC1338();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.linkText("Login to MyAvailableTime"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.xpath("//button[@onclick=\"form2.action='dom'\"]"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        driver.findElement(By.linkText("Login to MyAvailableTime")).click();
+        driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("polelogin"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.id("mattName"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        driver.findElement(By.id("polelogin")).clear();
-        driver.findElement(By.id("polelogin")).sendKeys("telrantests@yahoo.com");
+        driver.findElement(By.id("mattName")).clear();
+        driver.findElement(By.id("mattName")).sendKeys("one two three four five six seven eight nine ten");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("password"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.id("startDate"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        driver.findElement(By.id("password")).clear();
-        driver.findElement(By.id("password")).sendKeys("12345.com");
+        driver.findElement(By.id("startDate")).click();
+        driver.findElement(By.xpath("//div[@id='ui-datepicker-div']/table/tbody/tr[4]/td[2]/a")).click();
+        driver.findElement(By.id("endDate")).click();
+        driver.findElement(By.xpath("//div[@id='ui-datepicker-div']/table/tbody/tr[4]/td/a")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("1"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.id("saveMatt"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        driver.findElement(By.id("1")).click();
+        driver.findElement(By.id("saveMatt")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("second"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.xpath("//*[contains(text(),\"one two three four five six seven eight nine ten\")]"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        try {
-            assertTrue(isElementPresent(By.id("second")));
-        } catch (Error e) {
-            verificationErrors.append(e.toString());
-        }
-        System.out.println("Logins succesfully into account");
     }
 
     @AfterTest

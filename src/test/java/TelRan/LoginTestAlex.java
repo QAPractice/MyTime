@@ -1,95 +1,75 @@
-/**
- * Created by Anton on 24-Mar-15.
- */
 package TelRan;
+/*555*/
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.util.concurrent.TimeUnit;
 
-import static org.apache.commons.lang3.RandomStringUtils.*;
-import static org.testng.Assert.fail;
 import static org.testng.AssertJUnit.assertTrue;
+import static org.testng.FileAssert.fail;
 
-public class CreateAntonTest {
+public class LoginTestAlex {
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    private String calendarName;
 
     @BeforeTest
     public void setUp() throws Exception {
         driver = new FirefoxDriver();
-        baseUrl = "http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/";
+        baseUrl = "http://myavailabletime.com/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-
     }
 
     @Test
-
-    public void testCreateCalendarPositiveAnton() throws Exception {
-        driver.get(baseUrl + "/myavailabletime/home?name=antishipul%40gmail.com&password=a888888&mergedimage_2=");
+    public void testTC1338LoginThroughYahooAcc() throws Exception {
+        driver.get(baseUrl + "/");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.xpath("//form[@id='form2']/div/button"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.linkText("Login to MyAvailableTime"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        driver.findElement(By.xpath("//form[@id='form2']/div/button")).click();
-       calendarName = random(7);
-        System.out.println("New calendar Name " + calendarName);
+        driver.findElement(By.linkText("Login to MyAvailableTime")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("mattName"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.id("polelogin"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        driver.findElement(By.id("mattName")).click();
-        driver.findElement(By.id("mattName")).clear();
-        driver.findElement(By.id("mattName")).sendKeys(calendarName);
+        driver.findElement(By.id("polelogin")).clear();
+        driver.findElement(By.id("polelogin")).sendKeys("telrantests@yahoo.com");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("timeSlot"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.id("password"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("30 min");
+        driver.findElement(By.id("password")).clear();
+        driver.findElement(By.id("password")).sendKeys("12345.com");
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("startDate"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.id("1"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
-        driver.findElement(By.id("startDate")).click();
-        driver.findElement(By.xpath("//div[@id='ui-datepicker-div']//tr/td/a")).click();
-        driver.findElement(By.id("endDate")).click();
-        driver.findElement(By.xpath("//div[@id='ui-datepicker-div']/div/a/span")).click();
-        driver.findElement(By.xpath("//div[@id='ui-datepicker-div']//tr[4]/td[7]/a")).click();
+        driver.findElement(By.id("1")).click();
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.id("saveMatt"))) break; } catch (Exception e) {}
-            Thread.sleep(1000);
-        }
-
-        driver.findElement(By.id("saveMatt")).click();
-        for (int second = 0;; second++) {
-            if (second >= 60) fail("timeout");
-            try { if (isElementPresent(By.xpath("//*[@id='placetable']/table"))) break; } catch (Exception e) {}
+            try { if (isElementPresent(By.id("second"))) break; } catch (Exception e) {}
             Thread.sleep(1000);
         }
 
         try {
-            assertTrue(isElementPresent(By.xpath("//*[@id='placetable']//tr[1]/td[contains(text(),'" + calendarName + "')]")));
+            assertTrue(isElementPresent(By.id("second")));
         } catch (Error e) {
             verificationErrors.append(e.toString());
         }
-        System.out.println("Calendar " + calendarName + " was created");
+        System.out.println("Logins succesfully into account");
     }
 
     @AfterTest
@@ -134,4 +114,3 @@ public class CreateAntonTest {
         }
     }
 }
-
