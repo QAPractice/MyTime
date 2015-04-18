@@ -8,21 +8,18 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Anton on 18-Apr-15.
  */
-
 public class MainPage extends Page {
 
-    //buttons
-
-    @FindBy (xpath = "//*[@id='form2']/div/button")
-    WebElement createcalendarLink;
-
-    @FindBy(id = "'852'/td[2]" )
+    //buttons Sharing
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'MyCalendar')]/../../tr[3]/td[3]/a")
     WebElement ShareButton;
-    @FindBy(id = "'852'/td[3]" )
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'MyCalendar')]/../../tr[4]/td[2]/input")
+    WebElement ShareMailButton;
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'MyCalendar')]/../../tr[4]/td[3]/a")
     WebElement ShareOnGoogleButton;
-    @FindBy(id = "'852'/td[4]" )
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'MyCalendar')]/../../tr[4]/td[4]/a")
     WebElement ShareOnFacebookButton;
-//save
+
 
     public MainPage(WebDriver driver) {
         super(driver);
