@@ -11,16 +11,25 @@ import org.openqa.selenium.support.PageFactory;
 
 public class CreateCalendar  extends Page {
 
-    //fields
-    @FindBy(id = "polelogin" )
-    WebElement usernameField;
+    // Calendar's name field
+    @FindBy (id ="mattName")
+    WebElement calendarNameField;
 
-    @FindBy(id = "password" )
-    WebElement passwordField;
+    @FindBy (id = "startDate")
+    WebElement startDateSelect;
 
-    //buttons
-    @FindBy(id = "1" )
-    WebElement loginButton;
+    @FindBy (id = "endDate")
+    WebElement endDateSelect;
+
+
+    @FindBy (id = "timeSlot")
+    WebElement timeSlotSelect;
+
+    @FindBy (id = "mRepeat")
+    WebElement repeatWindow;
+
+    @FindBy (id = "saveMatt")
+    WebElement saveButton;
 
     public CreateCalendar(WebDriver driver){
 
