@@ -8,9 +8,14 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Anton on 18-Apr-15.
  */
+
 public class MainPage extends Page {
 
     //buttons
+
+    @FindBy (xpath = "//*[@id='form2']/div/button")
+    WebElement createcalendarLink;
+
     @FindBy(id = "'852'/td[2]" )
     WebElement ShareButton;
     @FindBy(id = "'852'/td[3]" )

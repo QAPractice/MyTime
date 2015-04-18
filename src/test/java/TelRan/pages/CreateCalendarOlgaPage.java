@@ -11,8 +11,6 @@ import org.openqa.selenium.support.PageFactory;
 public class CreateCalendarOlgaPage extends Page {
 
 
-    @FindBy(xpath = "//*[@id='form2']/div/button" )
-    WebElement createcalendarLink;
 
     @FindBy (id ="mattName")
     WebElement calendarnameField;
