@@ -6,9 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 /**
- * Created by Iakov Volf on 4/16/2015.
+ * Created by alex on 4/17/2015.
  */
-public class LoginPage  extends Page {
+
+public class CreateCalendar  extends Page {
 
     //fields
     @FindBy(id = "polelogin" )
@@ -21,9 +22,7 @@ public class LoginPage  extends Page {
     @FindBy(id = "1" )
     WebElement loginButton;
 
-
-
-    public LoginPage(WebDriver driver){
+    public CreateCalendar(WebDriver driver){
 
         super(driver);
 
