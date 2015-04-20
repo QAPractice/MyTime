@@ -28,6 +28,7 @@ public class CreateAntonTest {
         driver = new FirefoxDriver();
         baseUrl = "http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+
     }
 
     @Test
