@@ -26,11 +26,11 @@ public class CollaborationPage extends Page {
     WebElement collaborationButton;
 
     // button
-    @FindBy(id = "//*[@id='collab861']/td[6]/input" )
+    @FindBy(xpath = "//*[@id='collab861']/td[6]/input" )
     WebElement sendInvitationButton;
 
     // button
-    @FindBy(id = "//*[@id='collab861']/td[7]/input" )
+    @FindBy(xpath = "//*[@id='collab861']/td[7]/input" )
     WebElement setAppointmentButton;
 
 
