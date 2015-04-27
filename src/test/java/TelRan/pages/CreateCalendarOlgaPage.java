@@ -26,7 +26,8 @@ public class CreateCalendarOlgaPage extends Page {
 
     @FindBy (xpath = "//div[@id='ui-datepicker-div']/table/tbody/tr[4]/td[7]/a")
     WebElement chooseEndDate;
-
+    @FindBy(xpath = "//select[@class='ui-datepicker-month'][@data-handler='selectMonth']")
+    WebElement chooseMonth;
     @FindBy (id = "timeSlot")
     WebElement choosetimeSlotLink;
 
@@ -49,6 +50,18 @@ public class CreateCalendarOlgaPage extends Page {
         super(driver);
 
         PageFactory.initElements(driver, this);
+    }
+
+
+    public void typeCalendarName(String calendarName) {
+        setElementText(calendarnameField, calendarName);
+    }
+
+    public void setStartDate(String month, String day) {
+        clickElement(startdateLink);
+        selectValueInDropdown(chooseMonth, month);
+
+
     }
 
 }
