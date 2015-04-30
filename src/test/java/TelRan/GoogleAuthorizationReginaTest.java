@@ -1,9 +1,13 @@
 package TelRan;
 
 
+        import java.util.Iterator;
+        import java.util.Set;
         import java.util.concurrent.TimeUnit;
         import org.openqa.selenium.*;
         import org.openqa.selenium.firefox.FirefoxDriver;
+        import org.openqa.selenium.firefox.FirefoxProfile;
+        import org.openqa.selenium.firefox.internal.ProfilesIni;
         import org.testng.annotations.AfterTest;
         import org.testng.annotations.BeforeTest;
         import org.testng.annotations.Test;
@@ -20,7 +24,10 @@ public class GoogleAuthorizationReginaTest {
 
         @BeforeTest
         public void setUp() throws Exception {
-            driver = new FirefoxDriver();
+ //---create the WebDriver with the default values
+            FirefoxProfile profile =  new ProfilesIni().getProfile("default");
+            driver = new FirefoxDriver(profile);
+ //-----------------------------------------------
             baseUrl = "http://myavailabletime.com/";
             driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
         }
@@ -42,6 +49,13 @@ public class GoogleAuthorizationReginaTest {
             }
 
             driver.findElement(By.xpath("//div[@id='___signin_0']/button")).click();
+ //---change Window to "Запрос на разрешение"
+            Set<String> setWindowsId= driver.getWindowHandles();
+            Iterator<String> str = setWindowsId.iterator();
+            String parentId = str.next();
+            String childId = str.next();
+            driver.switchTo().window(childId);
+ //-------------------------------------------
             // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | Запрос на разрешение | ]]
             for (int second = 0;; second++) {
                 if (second >= 60) fail("timeout");
@@ -50,7 +64,9 @@ public class GoogleAuthorizationReginaTest {
             }
 
             driver.findElement(By.id("submit_approve_access")).click();
-            // ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
+ //---change Window to "Account settings"
+            driver.switchTo().window(parentId);
+ //---------------------------------------
             for (int second = 0;; second++) {
                 if (second >= 60) fail("timeout");
                 try { if (isElementPresent(By.xpath("//*[@id='googlecheck']"))) break; } catch (Exception e) {}
