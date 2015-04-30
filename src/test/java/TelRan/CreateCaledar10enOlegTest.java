@@ -1,24 +1,21 @@
 package TelRan;
 
-    import java.util.concurrent.TimeUnit;
-    import org.testng.*;
     import org.openqa.selenium.*;
     import org.openqa.selenium.firefox.FirefoxDriver;
     import org.testng.annotations.AfterTest;
-    import org.testng.annotations.BeforeClass;
     import org.testng.annotations.BeforeTest;
     import org.testng.annotations.Test;
 
-    import static org.testng.Assert.assertEquals;
+    import java.util.concurrent.TimeUnit;
+
     import static org.testng.Assert.fail;
-    import static org.testng.AssertJUnit.assertTrue;
 
 public class CreateCaledar10enOlegTest {
+    LoginOlegTest loginOlegTest = new LoginOlegTest();
     private WebDriver driver;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
-    LoginOlegTest loginOlegTest = new LoginOlegTest();
 
     @BeforeTest
     public void setUp() throws Exception {
