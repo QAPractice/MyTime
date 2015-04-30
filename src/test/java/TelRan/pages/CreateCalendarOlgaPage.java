@@ -52,7 +52,6 @@ public class CreateCalendarOlgaPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-
     public void typeCalendarName(String calendarName) {
         setElementText(calendarnameField, calendarName);
     }
@@ -61,7 +60,7 @@ public class CreateCalendarOlgaPage extends Page {
         clickElement(startdateLink);
         selectValueInDropdown(chooseMonth, month);
 
-
     }
 
 }
+
