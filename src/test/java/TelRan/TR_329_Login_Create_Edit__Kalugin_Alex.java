@@ -4,8 +4,10 @@ package TelRan;
  * Created by alex on 3/25/2015.
  */
 
+import TelRan.pages.CreateCalendar;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -57,7 +59,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.id("password"))) break; } catch (Exception e) {}
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         }
 
         driver.findElement(By.id("password")).clear();
@@ -81,6 +83,12 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             verificationErrors.append(e.toString());
         }
         System.out.println("Logins succesfully into account");
+        driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
+        CreateCalendar createCalendar;
+        createCalendar = PageFactory.initElements(driver, CreateCalendar.class);
+        createCalendar.setStartDate("5",8);
+        createCalendar.setEndDate("7", 2);
+
     }
 
 // *******************************************************************************************************
@@ -121,6 +129,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             Thread.sleep(1000);
         }
         System.out.println("Where am I N1?");
+
 
         new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("30 min");
         new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("1 hour");
