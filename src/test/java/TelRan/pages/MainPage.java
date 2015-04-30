@@ -11,16 +11,26 @@ import org.openqa.selenium.support.PageFactory;
 public class MainPage extends Page {
 
     //buttons Sharing
-    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'MyCalendar')]/../../tr[3]/td[3]/a")
-    WebElement shareButton;
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[3]/a")
+    WebElement calendarFirstshareButton;
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[4]/td[2]/input")
+    WebElement calendarFirstshareMailButton;
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[4]/td[3]/a")
+    WebElement calendarFirstshareOnGoogleButton;
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[4]/td[4]/a")
+    WebElement calendarFirstshareOnFacebookButton;
+
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4486432')]/../../tr[3]/td[3]/a")
+    WebElement digitshareButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'MyCalendar')]/../../tr[4]/td[2]/input")
-    WebElement shareMailButton;
+    WebElement digitshareMailButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'MyCalendar')]/../../tr[4]/td[3]/a")
-    WebElement shareOnGoogleButton;
+    WebElement digitshareOnGoogleButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'MyCalendar')]/../../tr[4]/td[4]/a")
-    WebElement shareOnFacebookButton;
+    WebElement digitshareOnFacebookButton;
     @FindBy(xpath = "//*[@id='form2']/div/button")
     WebElement linkToNewCalendar;
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -34,8 +44,30 @@ public class MainPage extends Page {
         createCalendarOlgaPage = PageFactory.initElements(driver, CreateCalendarOlgaPage.class);
     }
 
-    public void clickToShareButton() {
-        clickElement(shareButton);
+    public String getElementName(String calendarname, String buttonname) {
+        return (calendarname + buttonname);
+    }
+
+    public void clickToShareButtonFirstCal() {
+        clickElement(calendarFirstshareButton);
+    }
+
+    public void clickToShareButtonDigitCal() {
+        clickElement(digitshareButton);
+    }
+
+    public void clickToShareMailButtonDigitCal() {
+        clickElement(digitshareMailButton);
+        EmailAddressPage emailAddressPage;
+        emailAddressPage = PageFactory.initElements(driver, EmailAddressPage.class);
+
+    }
+
+    public void clickToShareMailButtonFirctCal() {
+        clickElement(calendarFirstshareMailButton);
+        EmailAddressPage emailAddressPage;
+        emailAddressPage = PageFactory.initElements(driver, EmailAddressPage.class);
+
     }
 
 
