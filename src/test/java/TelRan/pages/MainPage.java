@@ -125,5 +125,12 @@ public class MainPage extends Page {
         SyncFacebookPage syncFacebookPage;
         syncFacebookPage = PageFactory.initElements(driver, SyncFacebookPage.class);
     }
+
+    public void clickToRemoveButtonFirstCal() { clickElement(calendarFirstRemoveButton);
+    }
+    public void clickToRemoveButtonDigitCal() { clickElement(calendarDigitRemoveButton);
+    }
+    public void clickToRemoveButtonSecondCal() { clickElement(calendarSecondRemoveButton);
+    }
 }
  
