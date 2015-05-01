@@ -46,9 +46,7 @@ public class CreateCalendarOlgaPage extends Page {
 
 
     public CreateCalendarOlgaPage(WebDriver driver){
-
         super(driver);
-
         PageFactory.initElements(driver, this);
     }
 
