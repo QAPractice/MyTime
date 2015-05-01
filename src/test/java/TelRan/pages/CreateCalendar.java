@@ -35,7 +35,7 @@ public class CreateCalendar  extends Page {
     @FindBy(xpath = "//select[@class='ui-datepicker-month'][@data-handler='selectMonth']")
     WebElement chooseMonth;
 
-
+   // There are XPath for each date in calendar from 1 to 31.
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'1') and not( contains(text(),'10') ) " +
             "and not( contains(text(),'11') ) and not( contains(text(),'12') ) and not( contains(text(),'13') )" +
             "and not( contains(text(),'14') ) and not( contains(text(),'15') ) and not( contains(text(),'16') ) " +
@@ -62,24 +62,17 @@ public class CreateCalendar  extends Page {
             "and not( contains(text(),'25') )  ]")
     WebElement dayChooser_5;
 
-
-
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'6') and not( contains(text(),'16') ) " +
             "and not( contains(text(),'26') )  ]")
     WebElement dayChooser_6;
-
-
 
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'7') and not( contains(text(),'17') ) " +
             "and not( contains(text(),'27') )  ]")
     WebElement dayChooser_7;
 
-
-
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'8') and not( contains(text(),'18') ) " +
             "and not( contains(text(),'28') )  ]")
     WebElement dayChooser_8;
-
 
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'9') and not( contains(text(),'19') ) " +
             "and not( contains(text(),'29') )  ]")
@@ -102,7 +95,6 @@ public class CreateCalendar  extends Page {
 
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'15')]")
     WebElement dayChooser_15;
-
 
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'16')]")
     WebElement dayChooser_16;
@@ -154,7 +146,6 @@ public class CreateCalendar  extends Page {
 
 
 
-
     public CreateCalendar(WebDriver driver){
 
         super(driver);
@@ -162,7 +153,7 @@ public class CreateCalendar  extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    // Month must be string from "0" to "11", day must be number from 1 to 31.
+    // Month must be string from "0" to "11"(as defined by html code), day must be number from 1 to 31.
     public void setStartDate(String month, int day) {
         WebElement dayChooser;
         clickElement(startdateLink);
