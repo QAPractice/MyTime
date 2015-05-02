@@ -26,8 +26,10 @@ public class CreateCalendarOlgaPage extends Page {
 
     @FindBy (xpath = "//div[@id='ui-datepicker-div']/table/tbody/tr[4]/td[7]/a")
     WebElement chooseEndDate;
+
     @FindBy(xpath = "//select[@class='ui-datepicker-month'][@data-handler='selectMonth']")
     WebElement chooseMonth;
+
     @FindBy (id = "timeSlot")
     WebElement choosetimeSlotLink;
 
@@ -58,6 +60,14 @@ public class CreateCalendarOlgaPage extends Page {
         clickElement(startdateLink);
         selectValueInDropdown(chooseMonth, month);
 
+    }
+
+    public void setTimeSlot(){
+        clickElement(choosetimeSlotLink);
+    }
+
+    public void saveCalendar(){
+        clickElement(saveButton);
     }
 
 }
