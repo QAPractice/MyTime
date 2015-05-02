@@ -83,9 +83,12 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             verificationErrors.append(e.toString());
         }
         System.out.println("Logins succesfully into account");
-        driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
+
         CreateCalendar createCalendar;
         createCalendar = PageFactory.initElements(driver, CreateCalendar.class);
+        createCalendar.clickByXPath("//*[@id='placetable']//tr[1]/td[contains(text(),'","X", "')]/../../tr[3]/td[2]/input" );
+       // driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
+
         createCalendar.setStartDate("5",8);
         createCalendar.setEndDate("7", 2);
 

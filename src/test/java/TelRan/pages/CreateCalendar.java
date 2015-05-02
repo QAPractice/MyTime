@@ -1,5 +1,6 @@
 package TelRan.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -9,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
  */
 
 public class CreateCalendar  extends Page {
-
+   // protected WebDriver driver;
     // Calendar's name field
     @FindBy (id ="mattName")
     WebElement calendarNameField;
@@ -143,7 +144,6 @@ public class CreateCalendar  extends Page {
 
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'31')]")
     WebElement dayChooser_31;
-
 
 
     public CreateCalendar(WebDriver driver){
@@ -361,5 +361,17 @@ public class CreateCalendar  extends Page {
             e.printStackTrace();
         }
     }
+
+    public void clickByXPath( String before, String calName, String after ){
+        String xPath = before + calName + after;
+        // Sleep added only for debugging
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.xpath(xPath)).click();
+    }
+
 
 }
