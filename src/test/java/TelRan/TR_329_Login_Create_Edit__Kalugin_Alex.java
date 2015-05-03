@@ -9,6 +9,7 @@ import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -22,6 +23,7 @@ import static org.testng.FileAssert.fail;
 
 public class TR_329_Login_Create_Edit__Kalugin_Alex {
     private WebDriver driver;
+    private  WebDriverWait wait;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
@@ -86,12 +88,26 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
 
         CreateCalendar createCalendar;
         createCalendar = PageFactory.initElements(driver, CreateCalendar.class);
-        createCalendar.clickByXPath("//*[@id='placetable']//tr[1]/td[contains(text(),'","X", "')]/../../tr[3]/td[2]/input" );
-       // driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
 
+        driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
+        Name = createCalendar.setRandomName(1);
         createCalendar.setStartDate("5",8);
         createCalendar.setEndDate("7", 2);
-
+        createCalendar.clickSaveButton();
+        // Sleep added only for debugging
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //createCalendar.waitForElement(wait, "//*[@id='placetable']//tr[1]/td[contains(text(),'"+Name+ "')]/../../tr[3]/td[2]/input");
+        createCalendar.clickByXPath("//*[@id='placetable']//tr[1]/td[contains(text(),'",Name, "')]/../../tr[3]/td[2]/input" );
+        // Sleep added only for debugging
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 // *******************************************************************************************************
