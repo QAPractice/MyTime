@@ -30,4 +30,16 @@ public class ViewCalendarPage extends Page {
     public void verifyCalendarName(String createdCalendarTxt){
         verifyText(createdCalendarTxt, calendarnameField);
     }
+
+    public void clickNextButton() {
+        clickElement(nextButton);
+    }
+
+    public void clickBackButtom() {
+        clickElement(backButton);
+    }
+
+    public void clickHomeButton() {
+        clickElement(homeButton);
+    }
 }
