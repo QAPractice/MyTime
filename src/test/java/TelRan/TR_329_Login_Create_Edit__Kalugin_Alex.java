@@ -89,6 +89,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         CreateCalendar createCalendar;
         createCalendar = PageFactory.initElements(driver, CreateCalendar.class);
 
+
         driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
         Name = createCalendar.setRandomName(1);
         createCalendar.setStartDate( 2012,"5" ,8 );
