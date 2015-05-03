@@ -1,15 +1,19 @@
 package TelRan.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+
 /**
  * Created by alex on 4/17/2015.
  */
 
 public class CreateCalendar  extends Page {
-
+   // protected WebDriver driver;
     // Calendar's name field
     @FindBy (id ="mattName")
     WebElement calendarNameField;
@@ -143,7 +147,6 @@ public class CreateCalendar  extends Page {
 
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'31')]")
     WebElement dayChooser_31;
-
 
 
     public CreateCalendar(WebDriver driver){
@@ -361,5 +364,26 @@ public class CreateCalendar  extends Page {
             e.printStackTrace();
         }
     }
+// Builds XPath of element with 'calName' name and clicks on it.
+    public void clickByXPath( String before, String calName, String after ){
+        String xPath = before + calName + after;
+        // Sleep added only for debugging
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        driver.findElement(By.xpath(xPath)).click();
+    }
+// Chooses random name for calendar and returns it. Parameter n is a number of symbols in name.
+    public String setRandomName( int n ){
+        String Name = randomAlphabetic(n);
+        setElementText(calendarNameField, Name);
+        return Name;
+     }
+    public void clickSaveButton(  ){
+        clickElement(saveButton);
+    }
+
 
 }
