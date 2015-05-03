@@ -21,7 +21,7 @@ public class MainPage extends Page {
     WebElement calendarFirstshareOnFacebookButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'CalendarFirst')]/input")  // REMOVE
-            WebElement calendarFirstRemoveButton;
+    WebElement calendarFirstRemoveButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4486432')]/../../tr[3]/td[3]/a")
     WebElement digitshareButton;
@@ -33,7 +33,7 @@ public class MainPage extends Page {
     WebElement digitshareOnFacebookButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'4486432')]/input")  // REMOVE
-            WebElement calendarDigitRemoveButton;
+    WebElement calendarDigitRemoveButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4482Second')]/../../tr[3]/td[3]/a")
     WebElement digitLettershareButton;
@@ -45,10 +45,10 @@ public class MainPage extends Page {
     WebElement digitLettershareOnFacebookButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'4482Second')]/input")  // REMOVE
-            WebElement calendarSecondRemoveButton;
+    WebElement calendarSecondRemoveButton;
 
     @FindBy(xpath = "//*[@id='form2']/div/button")   // CREATE A NEW AVAILABLE CALENDAR
-            WebElement linkToNewCalendar;
+    WebElement linkToNewCalendar;
 
     // view Button
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[1]/input")
