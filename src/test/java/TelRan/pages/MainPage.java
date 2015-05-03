@@ -21,7 +21,7 @@ public class MainPage extends Page {
     WebElement calendarFirstshareOnFacebookButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'CalendarFirst')]/input")  // REMOVE
-    WebElement calendarFirstRemoveButton;
+            WebElement calendarFirstRemoveButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4486432')]/../../tr[3]/td[3]/a")
     WebElement digitshareButton;
@@ -33,7 +33,7 @@ public class MainPage extends Page {
     WebElement digitshareOnFacebookButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'4486432')]/input")  // REMOVE
-    WebElement calendarDigitRemoveButton;
+            WebElement calendarDigitRemoveButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4482Second')]/../../tr[3]/td[3]/a")
     WebElement digitLettershareButton;
@@ -45,10 +45,14 @@ public class MainPage extends Page {
     WebElement digitLettershareOnFacebookButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'4482Second')]/input")  // REMOVE
-    WebElement calendarSecondRemoveButton;
+            WebElement calendarSecondRemoveButton;
 
     @FindBy(xpath = "//*[@id='form2']/div/button")   // CREATE A NEW AVAILABLE CALENDAR
-    WebElement linkToNewCalendar;
+            WebElement linkToNewCalendar;
+
+    // view Button
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[1]/input")
+    WebElement viewCalendarButton;
 
 
     public MainPage(WebDriver driver) {
@@ -56,7 +60,7 @@ public class MainPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
-    public String getElementName(String calendarname, String buttonname){
+    public String getElementName(String calendarname, String buttonname) {
         return (calendarname + buttonname);
     }
 
@@ -67,11 +71,16 @@ public class MainPage extends Page {
         createCalendarOlgaPage = PageFactory.initElements(driver, CreateCalendarOlgaPage.class);
     }
 
-    public void clickToShareButtonFirstCal() { clickElement(calendarFirstshareButton);
+    public void clickToShareButtonFirstCal() {
+        clickElement(calendarFirstshareButton);
     }
-    public void clickToShareButtonDigitCal() {clickElement(digitshareButton);
+
+    public void clickToShareButtonDigitCal() {
+        clickElement(digitshareButton);
     }
-    public void clickToShareButtonSecondCal() {clickElement(digitLettershareButton);
+
+    public void clickToShareButtonSecondCal() {
+        clickElement(digitLettershareButton);
     }
 
     public void clickToShareMailButtonFirctCal() {
@@ -79,11 +88,13 @@ public class MainPage extends Page {
         EmailAddressPage emailAddressPage;
         emailAddressPage = PageFactory.initElements(driver, EmailAddressPage.class);
     }
+
     public void clickToShareMailButtonDigitCal() {
         clickElement(digitshareMailButton);
         EmailAddressPage emailAddressPage;
         emailAddressPage = PageFactory.initElements(driver, EmailAddressPage.class);
     }
+
     public void clickToShareMailButtonSecondCal() {
         clickElement(digitshareMailButton);
         EmailAddressPage emailAddressPage;
@@ -121,16 +132,30 @@ public class MainPage extends Page {
     }
 
     public void clickToShareOnFacebookButtonSecondCal() {
-        clickElement( digitLettershareOnFacebookButton);
+        clickElement(digitLettershareOnFacebookButton);
         SyncFacebookPage syncFacebookPage;
         syncFacebookPage = PageFactory.initElements(driver, SyncFacebookPage.class);
     }
 
-    public void clickToRemoveButtonFirstCal() { clickElement(calendarFirstRemoveButton);
+    public void clickToRemoveButtonFirstCal() {
+        clickElement(calendarFirstRemoveButton);
     }
-    public void clickToRemoveButtonDigitCal() { clickElement(calendarDigitRemoveButton);
+
+    public void clickToRemoveButtonDigitCal() {
+        clickElement(calendarDigitRemoveButton);
     }
-    public void clickToRemoveButtonSecondCal() { clickElement(calendarSecondRemoveButton);
+
+    public void clickToRemoveButtonSecondCal() {
+        clickElement(calendarSecondRemoveButton);
     }
+
+    //veiw Page
+    public void clickToViewCalendar() {
+        clickElement(viewCalendarButton);
+        ViewCalendarPage viewCalendarPage;
+        viewCalendarPage = PageFactory.initElements(driver, ViewCalendarPage.class);
+        viewCalendarPage.verifyCalendarName("CalendarFirst");
+    }
+
+
 }
- 
