@@ -91,8 +91,9 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
 
         driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
         Name = createCalendar.setRandomName(1);
-        createCalendar.setStartDate("5",8);
-        createCalendar.setEndDate("7", 2);
+        createCalendar.setStartDate( 2012,"5" ,8 );
+        createCalendar.setEndDate( 2017, "7", 2 );
+        createCalendar.setTimeSlot("30");
         createCalendar.clickSaveButton();
         // Sleep added only for debugging
         try {

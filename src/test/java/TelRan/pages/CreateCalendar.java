@@ -24,9 +24,6 @@ public class CreateCalendar  extends Page {
     @FindBy (id = "endDate")
     WebElement endDateSelect;
 
-    @FindBy (id = "startDate")
-    WebElement startdateLink;
-
     @FindBy (id = "timeSlot")
     WebElement timeSlotSelect;
 
@@ -38,6 +35,15 @@ public class CreateCalendar  extends Page {
 
     @FindBy(xpath = "//select[@class='ui-datepicker-month'][@data-handler='selectMonth']")
     WebElement chooseMonth;
+
+    @FindBy(xpath ="//*[@id='ui-datepicker-div']/div/div/span")
+    WebElement setYear;
+
+    @FindBy(xpath ="//*[@id='ui-datepicker-div']/div/a[2]/span")
+    WebElement yearStepUp;
+
+    @FindBy(xpath ="//*[@id='ui-datepicker-div']/div/a[1]/span")
+    WebElement yearStepDown;
 
    // There are XPath for each date in calendar from 1 to 31.
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'1') and not( contains(text(),'10') ) " +
@@ -157,13 +163,23 @@ public class CreateCalendar  extends Page {
     }
 
     // Month must be string from "0" to "11"(as defined by html code), day must be number from 1 to 31.
-    public void setStartDate(String month, int day) {
+    public void setStartDate(int year, String month, int day) {
         WebElement dayChooser;
-        clickElement(startdateLink);
-        selectValueInDropdown(chooseMonth, month);
+        String currentYear; // Year that is given by default
 
-        switch (day)
-        {
+        clickElement(startDateSelect);
+            // Here we are choosing year
+        currentYear = setYear.getAttribute("textContent");
+        int currentYearNumber = Integer.parseInt(currentYear);
+        // System.out.println("setYear" + currentYearNumber);
+        if( year - currentYearNumber > 0 )
+            for (int i = 1;  i <= (year - currentYearNumber)*12; i++){  clickElement(yearStepUp); }
+        if( year - currentYearNumber < 0 )
+            for (int i = 1;  i <= (currentYearNumber - year)*12; i++){  clickElement(yearStepDown); }
+
+        selectValueInDropdown(chooseMonth, month); // Here we are choosing month
+
+        switch (day) {          // Here we are choosing day
             case 1: dayChooser = dayChooser_1;
                 break;
             case 2: dayChooser = dayChooser_2;
@@ -246,12 +262,23 @@ public class CreateCalendar  extends Page {
     }
 
     // Month must be string from "0" to "11", day must be number from 1 to 31.
-    public void setEndDate(String month, int day) {
+    public void setEndDate(int year, String month, int day) {
         WebElement dayChooser;
-        clickElement(endDateSelect);
-        selectValueInDropdown(chooseMonth, month);
+        String currentYear; // Year that is given by default
 
-        switch (day) {
+        clickElement(endDateSelect);
+                         // Here we are choosing year
+        currentYear = setYear.getAttribute("textContent");
+        int currentYearNumber = Integer.parseInt(currentYear);
+        // System.out.println("setYear" + currentYearNumber);
+        if( year - currentYearNumber > 0 )
+            for (int i = 1;  i <= (year - currentYearNumber)*12; i++){  clickElement(yearStepUp); }
+        if( year - currentYearNumber < 0 )
+            for (int i = 1;  i <= (currentYearNumber - year)*12; i++){  clickElement(yearStepDown); }
+
+        selectValueInDropdown(chooseMonth, month); // Here we are choosing month
+
+        switch (day) {          // Here we are choosing day
             case 1:
                 dayChooser = dayChooser_1;
                 break;
@@ -381,9 +408,13 @@ public class CreateCalendar  extends Page {
         setElementText(calendarNameField, Name);
         return Name;
      }
+
     public void clickSaveButton(  ){
         clickElement(saveButton);
     }
 
+    public void setTimeSlot(String value){
+        selectValueInDropdown(timeSlotSelect, value);
+    }
 
 }
