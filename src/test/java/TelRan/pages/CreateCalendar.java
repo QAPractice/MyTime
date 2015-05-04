@@ -411,6 +411,11 @@ public class CreateCalendar  extends Page {
         return Name;
      }
 
+    public String setNotRandomName( String Name ){
+        setElementText(calendarNameField, Name);
+        return Name;
+    }
+
     public void clickSaveButton(  ){
         clickElement(saveButton);
     }
@@ -419,7 +424,7 @@ public class CreateCalendar  extends Page {
         selectValueInDropdown(timeSlotSelect, value);
     }
 
-   public void waitUntilNameIsLoaded() {
+    public void waitUntilNameIsLoaded() {
        try {
            waitUntilElementIsLoaded(calendarNameField);
        } catch (IOException e) {
