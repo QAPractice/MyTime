@@ -23,7 +23,7 @@ import static org.testng.FileAssert.fail;
 
 public class TR_329_Login_Create_Edit__Kalugin_Alex {
     private WebDriver driver;
-    private  WebDriverWait wait;
+    public  WebDriverWait wait;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
@@ -104,7 +104,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             Thread.sleep(1000);
         }
 
-        //createCalendar.waitForElement(wait, "//*[@id='placetable']//tr[1]/td[contains(text(),'"+Name+ "')]/../../tr[3]/td[2]/input");
+       // createCalendar.waitForElement(wait, "//*[@id='placetable']//tr[1]/td[contains(text(),'"+Name+ "')]/../../tr[3]/td[2]/input");
         createCalendar.clickByXPath("//*[@id='placetable']//tr[1]/td[contains(text(),'",Name, "')]/../../tr[3]/td[2]/input" );
         // Sleep added only for debugging
         try {

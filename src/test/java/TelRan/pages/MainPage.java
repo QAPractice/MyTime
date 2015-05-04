@@ -105,20 +105,20 @@ public class MainPage extends Page {
 
     public void clickToShareOnGoogleButtonFirstCal() {
         clickElement(calendarFirstshareOnGoogleButton);
-        SyncCooglePage syncCooglePage;
-        syncCooglePage = PageFactory.initElements(driver, SyncCooglePage.class);
+        SyncGooglePage syncCooglePage;
+        syncCooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
     }
 
     public void clickToShareOnGoogleButtonDigitCal() {
         clickElement(digitshareOnGoogleButton);
-        SyncCooglePage syncCooglePage;
-        syncCooglePage = PageFactory.initElements(driver, SyncCooglePage.class);
+        SyncGooglePage syncCooglePage;
+        syncCooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
     }
 
     public void clickToShareOnGoogleButtonSecondCal() {
         clickElement(digitLettershareOnGoogleButton);
-        SyncCooglePage syncCooglePage;
-        syncCooglePage = PageFactory.initElements(driver, SyncCooglePage.class);
+        SyncGooglePage syncCooglePage;
+        syncCooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
     }
 
     public void clickToShareOnFacebookButtonFirstCal() {
