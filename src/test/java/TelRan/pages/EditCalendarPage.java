@@ -46,6 +46,7 @@ public class EditCalendarPage extends Page{
         public EditCalendarPage(WebDriver driver){
 
                 super(driver);
+
                 PageFactory.initElements(driver, this);
 
         }
@@ -65,8 +66,12 @@ public class EditCalendarPage extends Page{
         public void setTimeSlot(String timeSlot){
 
                 clickElement(timeSlotLink);
-                selectValueInDropdown(choosetimeSlot,timeSlot);
+            selectValueInDropdown(choosetimeSlot, timeSlot);
         }
+
+    public boolean isOnEditPage() {
+        return exists(nextButton);
+    }
 
         public void setRepeatField(){
 

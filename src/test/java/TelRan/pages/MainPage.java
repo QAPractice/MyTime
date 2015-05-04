@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 /**
  * Created by Anton on 18-Apr-15, Iakov Volf,
  */
@@ -20,6 +22,8 @@ public class MainPage extends Page {
     WebElement calendarFirstshareOnGoogleButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[4]/td[4]/a")
     WebElement calendarFirstshareOnFacebookButton;
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[2]/input")
+    WebElement calendarFirstEditButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'CalendarFirst')]/input")  // REMOVE
             WebElement calendarFirstRemoveButton;
@@ -50,6 +54,10 @@ public class MainPage extends Page {
 
     @FindBy(xpath = "//*[@id='form2']/div/button")   // CREATE A NEW AVAILABLE CALENDAR
             WebElement linkToNewCalendar;
+
+    //Settings
+    @FindBy(id = "second")   // CREATE A NEW AVAILABLE CALENDAR
+            WebElement settingsPanel;
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -130,6 +138,28 @@ public class MainPage extends Page {
         SyncFacebookPage syncFacebookPage;
         syncFacebookPage = PageFactory.initElements(driver, SyncFacebookPage.class);
     }
+
+    public void waitUntilMainPageIsLoaded() {
+        try {
+            waitUntilElementIsLoaded(settingsPanel);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void clickToEditButtonFirstCal() {
+        clickElement(calendarFirstEditButton);
+        EditCalendarPage editCalendarPage;
+        editCalendarPage = PageFactory.initElements(driver, EditCalendarPage.class);
+
+    }
+
+    public boolean isOnMainPage() {
+        return exists(settingsPanel);
+    }
+
 
 }
  
