@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
 
 /**
@@ -416,5 +418,16 @@ public class CreateCalendar  extends Page {
     public void setTimeSlot(String value){
         selectValueInDropdown(timeSlotSelect, value);
     }
+
+   public void waitUntilNameIsLoaded() {
+       try {
+           waitUntilElementIsLoaded(calendarNameField);
+       } catch (IOException e) {
+           e.printStackTrace();
+       } catch (InterruptedException e) {
+           e.printStackTrace();
+       }
+
+   }
 
 }

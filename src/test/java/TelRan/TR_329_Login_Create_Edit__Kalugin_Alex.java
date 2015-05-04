@@ -91,17 +91,19 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
 
 
         driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
+        createCalendar.waitUntilNameIsLoaded();
         Name = createCalendar.setRandomName(1);
-        createCalendar.setStartDate( 2012,"5" ,8 );
+        createCalendar.setStartDate(2012, "5", 8);
         createCalendar.setEndDate( 2017, "7", 2 );
         createCalendar.setTimeSlot("30");
         createCalendar.clickSaveButton();
-        // Sleep added only for debugging
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+                // Verifies that we are on mane page. Should be reconsidered.
+        for (int second = 0;; second++) {
+            if (second >= 60) fail("timeout");
+            try { if (isElementPresent(By.id("first"))) break; } catch (Exception e) {}
+            Thread.sleep(1000);
         }
+
         //createCalendar.waitForElement(wait, "//*[@id='placetable']//tr[1]/td[contains(text(),'"+Name+ "')]/../../tr[3]/td[2]/input");
         createCalendar.clickByXPath("//*[@id='placetable']//tr[1]/td[contains(text(),'",Name, "')]/../../tr[3]/td[2]/input" );
         // Sleep added only for debugging
