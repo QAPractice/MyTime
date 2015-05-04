@@ -35,7 +35,7 @@ public class ViewCalendarPage extends Page {
         clickElement(nextButton);
     }
 
-    public void clickBackButtom() {
+    public void clickBackButton() {
         clickElement(backButton);
     }
 
