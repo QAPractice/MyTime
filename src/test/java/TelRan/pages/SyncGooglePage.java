@@ -8,7 +8,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Marina on 4/18/2015.
  */
-public class SyncCooglePage extends Page {
+public class SyncGooglePage extends Page {
     //buttons
     @FindBy(xpath = "//*[@id='log']/span[3]/button")
     WebElement accountSettings;
@@ -27,7 +27,7 @@ public class SyncCooglePage extends Page {
     WebElement googleAccountOption;
 
 
-    public SyncCooglePage(WebDriver driver) {
+    public SyncGooglePage(WebDriver driver) {
 
         super(driver);
 
