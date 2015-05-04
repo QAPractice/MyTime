@@ -4,9 +4,12 @@ package TelRan;
  * Created by alex on 3/25/2015.
  */
 
+import TelRan.pages.CreateCalendar;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
@@ -20,6 +23,7 @@ import static org.testng.FileAssert.fail;
 
 public class TR_329_Login_Create_Edit__Kalugin_Alex {
     private WebDriver driver;
+    private  WebDriverWait wait;
     private String baseUrl;
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
@@ -57,7 +61,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
             try { if (isElementPresent(By.id("password"))) break; } catch (Exception e) {}
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         }
 
         driver.findElement(By.id("password")).clear();
@@ -81,6 +85,33 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             verificationErrors.append(e.toString());
         }
         System.out.println("Logins succesfully into account");
+
+        CreateCalendar createCalendar;
+        createCalendar = PageFactory.initElements(driver, CreateCalendar.class);
+
+
+        driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
+        createCalendar.waitUntilNameIsLoaded();
+        Name = createCalendar.setRandomName(1);
+        createCalendar.setStartDate(2012, "5", 8);
+        createCalendar.setEndDate( 2017, "7", 2 );
+        createCalendar.setTimeSlot("30");
+        createCalendar.clickSaveButton();
+                // Verifies that we are on mane page. Should be reconsidered.
+        for (int second = 0;; second++) {
+            if (second >= 60) fail("timeout");
+            try { if (isElementPresent(By.id("first"))) break; } catch (Exception e) {}
+            Thread.sleep(1000);
+        }
+
+        //createCalendar.waitForElement(wait, "//*[@id='placetable']//tr[1]/td[contains(text(),'"+Name+ "')]/../../tr[3]/td[2]/input");
+        createCalendar.clickByXPath("//*[@id='placetable']//tr[1]/td[contains(text(),'",Name, "')]/../../tr[3]/td[2]/input" );
+        // Sleep added only for debugging
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
 // *******************************************************************************************************
@@ -121,6 +152,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
             Thread.sleep(1000);
         }
         System.out.println("Where am I N1?");
+
 
         new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("30 min");
         new Select(driver.findElement(By.id("timeSlot"))).selectByVisibleText("1 hour");
