@@ -61,7 +61,9 @@ public class MainPage extends Page {
 
     public MainPage(WebDriver driver) {
         super(driver);
+        this.PAGE_URL ="http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/home?name=telrantests%40yahoo.com&password=12345.com";
         PageFactory.initElements(driver, this);
+
     }
 
     public void openNewCalendarPage() {
@@ -160,6 +162,13 @@ public class MainPage extends Page {
         return exists(settingsPanel);
     }
 
+    public void createNewCalendar() {
+        clickElement(linkToNewCalendar);
+    }
+
+    public void openMainPage() {
+        driver.get(PAGE_URL);
+    }
 
 }
  

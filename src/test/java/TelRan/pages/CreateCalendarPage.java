@@ -3,6 +3,7 @@ package TelRan.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -46,6 +47,9 @@ public class CreateCalendarPage  extends Page {
 
     @FindBy(xpath ="//*[@id='ui-datepicker-div']/div/a[1]/span")
     WebElement yearStepDown;
+
+    @FindBy(xpath =  "//*[@id='td0s0']")
+    WebElement firstCell;
 
    // There are XPath for each date in calendar from 1 to 31.
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'1') and not( contains(text(),'10') ) " +
@@ -248,7 +252,7 @@ public class CreateCalendarPage  extends Page {
         }
         // Sleep added only for debugging
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -256,7 +260,7 @@ public class CreateCalendarPage  extends Page {
         clickElement(dayChooser);
         // Sleep added only for debugging
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -381,14 +385,14 @@ public class CreateCalendarPage  extends Page {
         }
         // Sleep added only for debugging
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         clickElement(dayChooser);
         // Sleep added only for debugging
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -398,7 +402,7 @@ public class CreateCalendarPage  extends Page {
         String xPath = before + calName + after;
         // Sleep added only for debugging
         try {
-            Thread.sleep(3000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -419,6 +423,26 @@ public class CreateCalendarPage  extends Page {
     public void clickSaveButton(  ){
         clickElement(saveButton);
     }
+    // Pay attention: Works Only for first cell
+    public boolean IsCellGreenAfterClick(  ){
+        clickElement(firstCell);
+        // Is it Green?
+        if("#008000".equals(Color.fromString(firstCell.getCssValue("background-color")).asHex()))
+            return true;
+        else return false;
+    }
+
+    // Pay attention: Works Only for first cell
+    public boolean IsCellColorChangedAfterClick(  ){
+        String cellColorBeforeClick  = Color.fromString(firstCell.getCssValue("background-color")).asHex();
+        clickElement(firstCell);
+        String cellColorAfterClick  = Color.fromString(firstCell.getCssValue("background-color")).asHex();
+        if(cellColorBeforeClick.equals(cellColorAfterClick))
+            return false;
+        else return true;
+    }
+
+
 
     public void setTimeSlot(String value){
         selectValueInDropdown(timeSlotSelect, value);
