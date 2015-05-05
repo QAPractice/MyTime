@@ -3,6 +3,7 @@ package TelRan.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -107,5 +108,19 @@ public abstract class Page {
     } catch (org.openqa.selenium.NoSuchElementException e) {
       return false;
     }
+  }
+
+  // Pay attention: Works Only for first cell
+  public boolean IsCellGreenAfterClick(WebElement locator) {
+    clickElement(locator);
+    // Is it Green?
+    return "#008000".equals(Color.fromString(locator.getCssValue("background-color")).asHex());
+  }
+
+  public boolean IsCellColorChangedAfterClick(WebElement cell) {
+    String cellColorBeforeClick = Color.fromString(cell.getCssValue("background-color")).asHex();
+    clickElement(cell);
+    String cellColorAfterClick = Color.fromString(cell.getCssValue("background-color")).asHex();
+    return !cellColorBeforeClick.equals(cellColorAfterClick);
   }
 }

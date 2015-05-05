@@ -3,7 +3,6 @@ package TelRan.pages;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
@@ -160,6 +159,10 @@ public class CreateCalendarPage  extends Page {
     @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'31')]")
     WebElement dayChooser_31;
 
+//cells locators
+
+    @FindBy(id = "td6s2")
+    WebElement td6s2;
 
     public CreateCalendarPage(WebDriver driver){
 
@@ -424,25 +427,13 @@ public class CreateCalendarPage  extends Page {
         clickElement(saveButton);
     }
     // Pay attention: Works Only for first cell
-    public boolean IsCellGreenAfterClick(  ){
-        clickElement(firstCell);
-        // Is it Green?
-        if("#008000".equals(Color.fromString(firstCell.getCssValue("background-color")).asHex()))
-            return true;
-        else return false;
+    public boolean IsFirstCellGreenAfterClick() {
+        return IsCellGreenAfterClick(firstCell);
     }
 
-    // Pay attention: Works Only for first cell
-    public boolean IsCellColorChangedAfterClick(  ){
-        String cellColorBeforeClick  = Color.fromString(firstCell.getCssValue("background-color")).asHex();
-        clickElement(firstCell);
-        String cellColorAfterClick  = Color.fromString(firstCell.getCssValue("background-color")).asHex();
-        if(cellColorBeforeClick.equals(cellColorAfterClick))
-            return false;
-        else return true;
+    public boolean isFirstCellColorChangedAfterClic() {
+        return IsCellColorChangedAfterClick(firstCell);
     }
-
-
 
     public void setTimeSlot(String value){
         selectValueInDropdown(timeSlotSelect, value);
