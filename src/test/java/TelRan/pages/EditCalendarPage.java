@@ -4,6 +4,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.io.IOException;
+
 /**
  * Created by oshil on 03.05.2015.
  */
@@ -43,33 +46,50 @@ public class EditCalendarPage extends Page{
         @FindBy(id="back")
         WebElement backButton;
 
+        @FindBy(xpath = "//*[@id='first']/div[1]/p")
+        WebElement lableCalendarName;
+
+
         public EditCalendarPage(WebDriver driver){
 
                 super(driver);
-
+                this.PAGE_URL = "http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/action_edit?table=993&username=romankotlr%40gmail.com&993.x=14&993.y=10";
                 PageFactory.initElements(driver, this);
 
         }
 
-        public void setStartDate(String month, String day) {
+        public void waitUntilEditPageIsLoaded() {
+                try {
+                        waitUntilElementIsLoaded(lableCalendarName);
+                } catch (IOException e) {
+                        e.printStackTrace();
+                } catch (InterruptedException e) {
+                        e.printStackTrace();
+                }
+
+        }
+        public void setStartDate(String month, int day) {
                 clickElement(startDateLink);
                 selectValueInDropdown(chooseMonth, month);
                 clickElement(chooseStartDate);
         }
 
-        public void endStartDate(String month, String day) {
+        public void setEndDate(String month, int day) {
                 clickElement(endDateLink);
                 selectValueInDropdown(chooseMonth, month);
                 clickElement(chooseEndDate);
         }
 
-        public void setTimeSlot(String timeSlot){
+        public void setTimeSlot(String timeSlot) {
 
                 clickElement(timeSlotLink);
             selectValueInDropdown(choosetimeSlot, timeSlot);
         }
+        public void openEditPage() {
 
-    public boolean isOnEditPage() {
+                driver.get(PAGE_URL);
+        }
+        public boolean isOnEditPage() {
         return exists(nextButton);
     }
 
