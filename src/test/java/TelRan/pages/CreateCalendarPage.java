@@ -14,7 +14,7 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
  * Created by alex on 4/17/2015.
  */
 
-public class CreateCalendar  extends Page {
+public class CreateCalendarPage  extends Page {
    // protected WebDriver driver;
     // Calendar's name field
     @FindBy (id ="mattName")
@@ -157,7 +157,7 @@ public class CreateCalendar  extends Page {
     WebElement dayChooser_31;
 
 
-    public CreateCalendar(WebDriver driver){
+    public CreateCalendarPage(WebDriver driver){
 
         super(driver);
 

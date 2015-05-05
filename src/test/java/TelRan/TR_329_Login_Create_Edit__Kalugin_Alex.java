@@ -4,7 +4,8 @@ package TelRan;
  * Created by alex on 3/25/2015.
  */
 
-import TelRan.pages.CreateCalendar;
+//import TelRan.pages.CreateCalendarPage;
+import TelRan.pages.CreateCalendarPage;
 import org.openqa.selenium.*;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
@@ -86,17 +87,17 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         }
         System.out.println("Logins succesfully into account");
 
-        CreateCalendar createCalendar;
-        createCalendar = PageFactory.initElements(driver, CreateCalendar.class);
+        CreateCalendarPage createCalendarPage;
+        createCalendarPage = PageFactory.initElements(driver, CreateCalendarPage.class);
 
 
         driver.findElement(By.xpath("//button[@onclick=\"form2.action='dom'\"]")).click();
-        createCalendar.waitUntilNameIsLoaded();
-        Name = createCalendar.setRandomName(1);
-        createCalendar.setStartDate(2012, "5", 8);
-        createCalendar.setEndDate( 2017, "7", 2 );
-        createCalendar.setTimeSlot("30");
-        createCalendar.clickSaveButton();
+        createCalendarPage.waitUntilNameIsLoaded();
+        Name = createCalendarPage.setRandomName(1);
+        createCalendarPage.setStartDate(2012, "5", 8);
+        createCalendarPage.setEndDate( 2017, "7", 2 );
+        createCalendarPage.setTimeSlot("30");
+        createCalendarPage.clickSaveButton();
                 // Verifies that we are on mane page. Should be reconsidered.
         for (int second = 0;; second++) {
             if (second >= 60) fail("timeout");
@@ -105,7 +106,7 @@ public class TR_329_Login_Create_Edit__Kalugin_Alex {
         }
 
        // createCalendar.waitForElement(wait, "//*[@id='placetable']//tr[1]/td[contains(text(),'"+Name+ "')]/../../tr[3]/td[2]/input");
-        createCalendar.clickByXPath("//*[@id='placetable']//tr[1]/td[contains(text(),'",Name, "')]/../../tr[3]/td[2]/input" );
+        createCalendarPage.clickByXPath("//*[@id='placetable']//tr[1]/td[contains(text(),'",Name, "')]/../../tr[3]/td[2]/input" );
         // Sleep added only for debugging
         try {
             Thread.sleep(3000);
