@@ -41,4 +41,5 @@ public class CollaborationPage extends Page {
         PageFactory.initElements(driver, this);
     }
 
+
 }

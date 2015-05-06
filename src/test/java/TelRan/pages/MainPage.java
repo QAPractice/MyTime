@@ -53,7 +53,7 @@ public class MainPage extends Page {
             WebElement calendarSecondRemoveButton;
 
     @FindBy(xpath = "//*[@id='form2']/div/button")   // CREATE A NEW AVAILABLE CALENDAR
-            WebElement linkToNewCalendar;
+            public WebElement linkToNewCalendar;
 
     //Settings
     @FindBy(id = "second")   // CREATE A NEW AVAILABLE CALENDAR
@@ -61,7 +61,7 @@ public class MainPage extends Page {
 
     public MainPage(WebDriver driver) {
         super(driver);
-        this.PAGE_URL ="http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/home?name=telrantests%40yahoo.com&password=12345.com";
+        this.PAGE_URL ="http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/home?name=rilopatin%40gmail.com&password=12345&mergedimage_2=";
         PageFactory.initElements(driver, this);
 
     }

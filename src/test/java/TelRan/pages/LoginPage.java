@@ -50,10 +50,9 @@ public class LoginPage  extends Page {
 
     }
 
-    public void login() throws Exception {
-
-        waitUntilElementIsLoaded(loginButton);
-        fillLoginfields("Mary", "123456");
+    public void login(String login, String pass) throws Exception {
+        waitUntilLoginPageIsLoaded();
+        fillLoginfields(login, pass);
         clickToLogin();
     }
 

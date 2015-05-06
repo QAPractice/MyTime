@@ -162,7 +162,7 @@ public class CreateCalendarPage  extends Page {
 //cells locators
 
     @FindBy(id = "td6s2")
-    WebElement td6s2;
+    public WebElement td6s2;
 
     public CreateCalendarPage(WebDriver driver){
 
