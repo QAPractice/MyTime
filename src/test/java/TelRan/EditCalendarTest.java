@@ -43,9 +43,9 @@ public class EditCalendarTest {
     public void TestLoginSuccess() {
         try {
             editCalendarPage.waitUntilEditPageIsLoaded();
-//            editCalendarPage.setStartDate(May,11);
-//            editCalendarPage.setEndDate(Jun,8);
-//            editCalendarPage.setTimeSlot(2);
+            editCalendarPage.setStartDate("May",11);
+            editCalendarPage.setEndDate("Jun",8);
+            editCalendarPage.setTimeSlot("30");
             editCalendarPage.setRepeatField();
             editCalendarPage.saveCalendar();
             mainPage.waitUntilMainPageIsLoaded();
