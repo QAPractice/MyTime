@@ -27,10 +27,10 @@ public class EditCalendarPage extends Page{
         @FindBy(id="endDate")
         WebElement endDateLink;
 
-        @FindBy (xpath = "//div[@id='ui-datepicker-div']/table/tbody/tr[2]/td[4]/a")
+        @FindBy (xpath = "//div[@id='ui-datepicker-div']/table/tbody")
         WebElement chooseStartDate;
 
-        @FindBy (xpath = "//div[@id='ui-datepicker-div']/table/tbody/tr[3]/td[3]/a")
+        @FindBy (xpath = "//div[@id='ui-datepicker-div']/table/tbody")
         WebElement chooseEndDate;
 
         @FindBy(xpath = "//select[@class='ui-datepicker-month'][@data-handler='selectMonth']")
@@ -66,18 +66,20 @@ public class EditCalendarPage extends Page{
                 } catch (InterruptedException e) {
                         e.printStackTrace();
                 }
-
         }
-        public void setStartDate(String month, int day) {
+
+        public void setStartDate(String month, String day) {
                 clickElement(startDateLink);
+                clickElement(chooseMonth);
                 selectValueInDropdown(chooseMonth, month);
-                clickElement(chooseStartDate);
+                selectValueInDropdown(chooseStartDate,day);
         }
 
-        public void setEndDate(String month, int day) {
+        public void setEndDate(String month,String day) {
                 clickElement(endDateLink);
+                clickElement(chooseMonth);
                 selectValueInDropdown(chooseMonth, month);
-                clickElement(chooseEndDate);
+                selectValueInDropdown(chooseEndDate,day);
         }
 
         public void setTimeSlot(String timeSlot) {
