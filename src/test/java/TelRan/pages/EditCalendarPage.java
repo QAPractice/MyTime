@@ -1,6 +1,7 @@
 package TelRan.pages;
 
 import org.openqa.selenium.WebDriver;
+import TelRan.pages.LoginPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -53,7 +54,7 @@ public class EditCalendarPage extends Page{
         public EditCalendarPage(WebDriver driver){
 
                 super(driver);
-                this.PAGE_URL = "http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/action_edit?table=993&username=romankotlr%40gmail.com&993.x=14&993.y=10";
+//              this.PAGE_URL = "http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/action_edit?table=993&username=romankotlr%40gmail.com&993.x=14&993.y=10";
                 PageFactory.initElements(driver, this);
 
         }
@@ -87,13 +88,13 @@ public class EditCalendarPage extends Page{
                 clickElement(timeSlotLink);
             selectValueInDropdown(choosetimeSlot, timeSlot);
         }
-        public void openEditPage() {
-
-                driver.get(PAGE_URL);
-        }
-        public boolean isOnEditPage() {
-        return exists(nextButton);
-    }
+//        public void openEditPage() {
+//
+//                driver.get(PAGE_URL);
+//        }
+//        public boolean isOnEditPage() {
+//        return exists(nextButton);
+//    }
 
         public void setRepeatField(){
 

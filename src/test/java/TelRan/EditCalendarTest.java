@@ -2,6 +2,7 @@ package TelRan;
 
 import TelRan.pages.LoginPage;
 import TelRan.pages.MainPage;
+import TelRan.pages.LoginPage;
 import TelRan.pages.EditCalendarPage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,7 @@ public class EditCalendarTest {
     public WebDriver driver;
     public WebDriverWait wait;
     private boolean acceptNextAlert = true;
+    LoginPage loginPage;
     private StringBuffer verificationErrors = new StringBuffer();
     EditCalendarPage editCalendarPage;
     MainPage mainPage;
@@ -34,14 +36,15 @@ public class EditCalendarTest {
         this.driver = new FirefoxDriver();
         wait = new WebDriverWait(driver, 5);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        editCalendarPage = PageFactory.initElements(driver, EditCalendarPage.class);
-        editCalendarPage.openEditPage();
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        loginPage.openLoginPage();
         mainPage = PageFactory.initElements(driver, MainPage.class);
     }
 
     @Test
     public void TestLoginSuccess() {
         try {
+            loginPage.login("telrantests@yahoo.com", "12345.com");
             editCalendarPage.waitUntilEditPageIsLoaded();
             editCalendarPage.setStartDate("5","11");
             editCalendarPage.setEndDate("8","8");
