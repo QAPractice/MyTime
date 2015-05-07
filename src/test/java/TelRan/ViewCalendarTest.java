@@ -1,10 +1,13 @@
 package TelRan;
 
 import TelRan.pages.ViewCalendarPage;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -31,13 +34,48 @@ public class ViewCalendarTest {
     }
 
     @Test
-    public void testVievCalendarPage() {
+    public void testViewCalendarPage() {
         try {
             viewCalendarPage.waitUntilViewCalendarPageIsLoaded();
-            viewCalendarPage.verifyCalendarName(viewCalendarPage.getCalendarnameField().getText());
+            viewCalendarPage.isOnViewCalendarPage();
+            String day = viewCalendarPage.getDayValue().getText();
+            int prevDay = viewCalendarPage.getDayAsNumber(day);
+            viewCalendarPage.setPrevLocatorValue(prevDay);
+            viewCalendarPage.clickNextButton();
+            String day2 = viewCalendarPage.getDayValue().getText();
+            int nextDay = viewCalendarPage.getDayAsNumber(day2);
+            viewCalendarPage.setNextLocatorValue(nextDay);
+            boolean isNextDayGood = prevDay < nextDay;
+            Assert.assertTrue(isNextDayGood);
+
         } catch (Exception e) {
+            e.printStackTrace();
 
         }
     }
+
+    @AfterClass(alwaysRun = true)
+    public void teardown() {
+        this.driver.quit();
+    }
+
+    private String closeAlertAndGetItsText() {
+        try {
+            Alert alert = driver.switchTo().alert();
+            String alertText = alert.getText();
+            if (acceptNextAlert) {
+                alert.accept();
+            } else {
+                alert.dismiss();
+            }
+            return alertText;
+        } finally {
+            acceptNextAlert = true;
+        }
+    }
+
 }
+
+
+
 

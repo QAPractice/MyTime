@@ -12,19 +12,18 @@ import java.io.IOException;
  */
 public class ViewCalendarPage extends Page {
 
+    public int prevLocatorValue;
+    public int nextLocatorValue;
     @FindBy (id = "mattName")
     WebElement calendarnameField;
-
     @FindBy (id = "next")
     WebElement nextButton;
-
     @FindBy (id = "back")
     WebElement backButton;
-
     @FindBy (id = "saveMatt")
     WebElement homeButton;
-
-    private int prevLocatorValue;
+    @FindBy(xpath = "//*[@id='dayValue']/th[4]")
+    WebElement dayValue;
 
     public ViewCalendarPage(WebDriver driver) {
         super(driver);
@@ -68,13 +67,39 @@ public class ViewCalendarPage extends Page {
     }
 
 
-    private int getDayAsNumber(String date) {
+    public int getDayAsNumber(String date) {
         String s = date.substring(0, date.indexOf('.'));
         int number = Integer.parseInt(s);
         return number;
     }
 
+
     public WebElement getCalendarnameField() {
         return calendarnameField;
+    }
+
+    public int getPrevLocatorValue() {
+        return prevLocatorValue;
+    }
+
+    public void setPrevLocatorValue(int prevLocatorValue) {
+        this.prevLocatorValue = prevLocatorValue;
+    }
+
+    public int getNextLocatorValue() {
+        return nextLocatorValue;
+    }
+
+    public void setNextLocatorValue(int nextLocatorValue) {
+        this.nextLocatorValue = nextLocatorValue;
+
+    }
+
+    public WebElement getDayValue() {
+        return dayValue;
+    }
+
+    public void setDayValue(WebElement dayValue) {
+        this.dayValue = dayValue;
     }
 }
