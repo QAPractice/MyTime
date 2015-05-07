@@ -76,6 +76,7 @@ public abstract class Page {
     }
   }
 
+
   public void verifyText(String text, WebElement element) {
     try {
       org.testng.Assert.assertEquals(text, element.getText());

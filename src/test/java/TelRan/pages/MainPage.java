@@ -92,7 +92,7 @@ public class MainPage extends Page {
 
     }
 
-    public void clickToShareMailButtonFirctCal() {
+    public void clickToShareMailButtonFirstCal() {
         clickElement(calendarFirstshareMailButton);
         EmailAddressPage emailAddressPage;
         emailAddressPage = PageFactory.initElements(driver, EmailAddressPage.class);
@@ -107,20 +107,20 @@ public class MainPage extends Page {
 
     public void clickToShareOnGoogleButtonFirstCal() {
         clickElement(calendarFirstshareOnGoogleButton);
-        SyncGooglePage syncCooglePage;
-        syncCooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
+        SyncGooglePage syncGooglePage;
+        syncGooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
     }
 
     public void clickToShareOnGoogleButtonDigitCal() {
         clickElement(digitshareOnGoogleButton);
-        SyncGooglePage syncCooglePage;
-        syncCooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
+        SyncGooglePage syncGooglePage;
+        syncGooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
     }
 
     public void clickToShareOnGoogleButtonSecondCal() {
         clickElement(digitLettershareOnGoogleButton);
-        SyncGooglePage syncCooglePage;
-        syncCooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
+        SyncGooglePage syncGooglePage;
+        syncGooglePage = PageFactory.initElements(driver, SyncGooglePage.class);
     }
 
     public void clickToShareOnFacebookButtonFirstCal() {

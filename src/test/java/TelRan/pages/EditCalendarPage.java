@@ -1,7 +1,6 @@
 package TelRan.pages;
 
 import org.openqa.selenium.WebDriver;
-import TelRan.pages.LoginPage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -50,6 +49,8 @@ public class EditCalendarPage extends Page{
         @FindBy(xpath = "//*[@id='first']/div[1]/p")
         WebElement lableCalendarName;
 
+        @FindBy(id = "mattName")
+        WebElement calendarNameField;
 
         public EditCalendarPage(WebDriver driver){
 
@@ -104,6 +105,10 @@ public class EditCalendarPage extends Page{
         public void saveCalendar(){
 
                 clickElement(saveButton);
+        }
+
+        public void checkCalendarName(String calendarName) {
+                verifyText(calendarName, calendarNameField);
         }
 
 }
