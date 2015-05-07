@@ -31,18 +31,22 @@ public class CreateMATRandomAlphReginaPOTest {
     CreateCalendarOlgaPage createCalendarOlgaPage;
 
     @BeforeMethod(alwaysRun = true)
-    public void setup() {
+    public void setup() throws Exception {
         this.driver = new FirefoxDriver();
         wait = new WebDriverWait(driver, 5);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         loginPage.openLoginPage();
         mainPage = PageFactory.initElements(driver, MainPage.class);
+        try {
+            loginPage.login("rilopatin@gmail.com", "12345");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
     @Test
     public void TestCreateMATSuccess() {
         try {
-            loginPage.login("rilopatin@gmail.com", "12345");
             mainPage.waitUntilMainPageIsLoaded();
             assertTrue(mainPage.isOnMainPage());
             mainPage.openNewCalendarPage();

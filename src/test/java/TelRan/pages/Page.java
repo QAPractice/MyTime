@@ -27,7 +27,8 @@ public abstract class Page {
    * @param webDriver
    */
   public Page(WebDriver driver) {
-    this.driver = driver;
+
+      this.driver = driver;
   }
 
   public String getTitle() {
