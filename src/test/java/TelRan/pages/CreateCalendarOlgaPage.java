@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 /**
  * Created by OlgaK on 4/17/15.
  */
@@ -53,6 +55,7 @@ public class CreateCalendarOlgaPage extends Page {
     }
 
     public void typeCalendarName(String calendarName) {
+        clickElement(calendarnameField);
         setElementText(calendarnameField, calendarName);
     }
 
@@ -70,5 +73,17 @@ public class CreateCalendarOlgaPage extends Page {
         clickElement(saveButton);
     }
 
+    public void waitUntilCreateCalendarIsLoaded() {
+        try {
+            waitUntilElementIsLoaded(calendarnameField);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+    public boolean isOnCalendarPage() {
+        return exists(calendarnameField);
+    }
 }
 

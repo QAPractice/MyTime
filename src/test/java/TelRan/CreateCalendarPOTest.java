@@ -49,8 +49,8 @@ public class CreateCalendarPOTest {
             createCalendarPage.setStartDate(2012, "5", 8);
             createCalendarPage.setEndDate( 2017, "7", 2 );
             createCalendarPage.setTimeSlot("30");
- //           assertTrue(createCalendarPage.IsCellGreenAfterClick());
- //           assertTrue(createCalendarPage.IsCellColorChangedAfterClick() );
+            assertTrue(createCalendarPage.IsCellGreenAfterClick());
+            assertTrue(createCalendarPage.IsCellColorChangedAfterClick() );
             createCalendarPage.clickSaveButton();
             mainPage.waitUntilMainPageIsLoaded();
             assertTrue(mainPage.isOnMainPage());
