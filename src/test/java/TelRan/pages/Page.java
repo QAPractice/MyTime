@@ -85,6 +85,11 @@ public abstract class Page {
     }
   }
 
+    public boolean verifyTextBoolean(String text, WebElement element) {
+       return text.equals(element.getText());
+    }
+
+
   public boolean exists(WebElement element) {
     try {
       element.isDisplayed();
