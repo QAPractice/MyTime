@@ -194,7 +194,9 @@ public class EditCalendarTrainingPage extends Page {
 
 
     // Month must be string from "0" to "11"(as defined by html code), day must be number from 1 to 31.
+    public void setYear(int Year) {
 
+    }
     public void setStartDate(int year, String month, int day) {
         WebElement dayChooser;
         String currentYear; // Year that is given by default

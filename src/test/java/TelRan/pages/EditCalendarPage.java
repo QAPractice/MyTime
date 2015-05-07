@@ -60,6 +60,7 @@ public class EditCalendarPage extends Page{
 
         }
 
+        //methods
         public void waitUntilEditPageIsLoaded() {
                 try {
                         waitUntilElementIsLoaded(lableCalendarName);
@@ -107,8 +108,9 @@ public class EditCalendarPage extends Page{
                 clickElement(saveButton);
         }
 
-        public void checkCalendarName(String calendarName) {
-                verifyText(calendarName, calendarNameField);
+
+        public boolean checkCalendarNameIsCorrect(String calendarName) {
+                return verifyTextBoolean(calendarName, calendarNameField);
         }
 
 }
