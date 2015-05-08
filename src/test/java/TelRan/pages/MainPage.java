@@ -22,8 +22,6 @@ public class MainPage extends Page {
     WebElement calendarFirstshareOnGoogleButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[4]/td[4]/a")
     WebElement calendarFirstshareOnFacebookButton;
-    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[2]/input")
-    WebElement calendarFirstEditButton;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'CalendarFirst')]/input")  // REMOVE
             WebElement calendarFirstRemoveButton;
@@ -56,8 +54,12 @@ public class MainPage extends Page {
             public WebElement linkToNewCalendar;
 
     //Settings
-    @FindBy(id = "second")   // CREATE A NEW AVAILABLE CALENDAR
+    @FindBy(xpath = "//*[@id='socialseti']")   // CREATE A NEW AVAILABLE CALENDAR
             WebElement settingsPanel;
+
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[2]/input")
+    WebElement calendarFirstEditButton;
+
 
     public MainPage(WebDriver driver) {
         super(driver);
@@ -151,6 +153,7 @@ public class MainPage extends Page {
         }
     }
 
+
     public void clickToEditButtonFirstCal() {
         clickElement(calendarFirstEditButton);
         EditCalendarPage editCalendarPage;
@@ -161,6 +164,8 @@ public class MainPage extends Page {
     public boolean isOnMainPage() {
         return exists(settingsPanel);
     }
+
+    public boolean isCalendarFirstExists() {  return exists(calendarFirstshareButton);  }
 
     public void createNewCalendar() {
         clickElement(linkToNewCalendar);

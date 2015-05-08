@@ -40,6 +40,9 @@ public class EditCalendarPage extends Page{
         WebElement choosetimeSlot;
 
 
+        @FindBy(xpath = "//*[@id='first']/div[1]/p[contains(text(),'CalendarFirst')]")
+        WebElement  CalendarFirstEditPage;
+
         @FindBy(id="next")
         WebElement nextButton;
 
@@ -71,11 +74,22 @@ public class EditCalendarPage extends Page{
                 }
         }
 
+    public void waitUntilCalendarFirstEditPageIsLoaded(){
+        try {
+            waitUntilElementIsLoaded(CalendarFirstEditPage);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+
         public void setStartDate(String month, String day) {
                 clickElement(startDateLink);
                 clickElement(chooseMonth);
                 selectValueInDropdown(chooseMonth, month);
-                selectValueInDropdown(chooseStartDate,day);
+            selectValueInDropdown(chooseStartDate,day);
         }
 
         public void setEndDate(String month,String day) {
@@ -112,6 +126,16 @@ public class EditCalendarPage extends Page{
         public boolean checkCalendarNameIsCorrect(String calendarName) {
                 return verifyTextBoolean(calendarName, calendarNameField);
         }
+
+         // Extracts full data string from startDateLink webElement(for example 4.06.2012 )
+         public String startDateLinkValue() {
+             return startDateLink.getAttribute("value");
+         }
+
+         // Extracts full date string from endDateLink webElement(for example 4.06.2017 )
+    public String endDateLinkValue(){
+            return endDateLink.getAttribute("value");
+         }
 
 }
 
