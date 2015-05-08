@@ -15,7 +15,7 @@ import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
  */
 
 public class CreateCalendarPage  extends Page {
-   // protected WebDriver driver;
+
     // Calendar's name field
     @FindBy (id ="mattName")
     WebElement calendarNameField;
@@ -172,10 +172,9 @@ public class CreateCalendarPage  extends Page {
     }
 
     // Month must be string from "0" to "11"(as defined by html code), day must be number from 1 to 31.
-    public void setStartDate(int year, String month, int day) {
+    public String setStartDate(int year, String month, int day) {
         WebElement dayChooser;
         String currentYear; // Year that is given by default
-
         clickElement(startDateSelect);
             // Here we are choosing year
         currentYear = setYear.getAttribute("textContent");
@@ -251,27 +250,14 @@ public class CreateCalendarPage  extends Page {
                 break;
             case 31: dayChooser = dayChooser_31;
                 break;
-            default: { System.out.println(" Such day is not exist" ); return; }
+            default: { System.out.println(" Such day is not exist" ); return null; }
         }
-        // Sleep added only for debugging
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-        clickElement(dayChooser);
-        // Sleep added only for debugging
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-
-    }
+         clickElement(dayChooser);
+         return startDateSelect.getAttribute("value");
+     }
 
     // Month must be string from "0" to "11", day must be number from 1 to 31.
-    public void setEndDate(int year, String month, int day) {
+    public String setEndDate(int year, String month, int day) {
         WebElement dayChooser;
         String currentYear; // Year that is given by default
 
@@ -383,23 +369,13 @@ public class CreateCalendarPage  extends Page {
                 break;
             default: {
                 System.out.println(" Such day is not exist");
-                return;
+                return null;
             }
         }
-        // Sleep added only for debugging
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        clickElement(dayChooser);
-        // Sleep added only for debugging
-        try {
-            Thread.sleep(1000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+         clickElement(dayChooser);
+        return endDateSelect.getAttribute("value");
     }
+
 // Builds XPath of element with 'calName' name and clicks on it.
     public void clickByXPath( String before, String calName, String after ){
         String xPath = before + calName + after;
@@ -426,12 +402,19 @@ public class CreateCalendarPage  extends Page {
     public void clickSaveButton(  ){
         clickElement(saveButton);
     }
+
+
+    public void clickFirstCell(  ){
+        clickElement(firstCell);
+    }
+
+
     // Pay attention: Works Only for first cell
     public boolean IsFirstCellGreenAfterClick() {
         return IsCellGreenAfterClick(firstCell);
     }
 
-    public boolean isFirstCellColorChangedAfterClic() {
+    public boolean isFirstCellColorChangedAfterClick() {
         return IsCellColorChangedAfterClick(firstCell);
     }
 
