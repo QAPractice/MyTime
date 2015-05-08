@@ -51,6 +51,7 @@ public class CreateCalendarOlgaPage extends Page {
 
     public CreateCalendarOlgaPage(WebDriver driver){
         super(driver);
+ //       this.PAGE_URL ="http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/dom";
         PageFactory.initElements(driver, this);
     }
 

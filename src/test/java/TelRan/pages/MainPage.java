@@ -61,7 +61,7 @@ public class MainPage extends Page {
 
     public MainPage(WebDriver driver) {
         super(driver);
-        this.PAGE_URL ="http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/home?name=rilopatin%40gmail.com&password=12345&mergedimage_2=";
+ //       this.PAGE_URL ="http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/home?name=rilopatin%40gmail.com&password=12345&mergedimage_2=";
         PageFactory.initElements(driver, this);
 
     }
@@ -69,8 +69,8 @@ public class MainPage extends Page {
     public void openNewCalendarPage() {
         clickElement(linkToNewCalendar);
 
-        CreateCalendarOlgaPage createCalendarOlgaPage;
-        createCalendarOlgaPage = PageFactory.initElements(driver, CreateCalendarOlgaPage.class);
+/*        CreateCalendarOlgaPage createCalendarOlgaPage;
+        createCalendarOlgaPage = PageFactory.initElements(driver, CreateCalendarOlgaPage.class);*/
     }
 
     public String getElementName(String calendarname, String buttonname) {
