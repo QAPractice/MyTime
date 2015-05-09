@@ -38,7 +38,7 @@ public class CreateCalendarPOTest {
         loginPage = PageFactory.initElements(driver, LoginPage.class);
         mainPage = PageFactory.initElements(driver, MainPage.class);
         createCalendarPage = PageFactory.initElements(driver,CreateCalendarPage.class);
-        //editCalendarPage = PageFactory.initElements(driver, EditCalendarPage.class);
+        editCalendarPage = PageFactory.initElements(driver, EditCalendarPage.class);
         loginPage.openLoginPage();
         try {
             loginPage.login("telrantests@yahoo.com", "12345.com");
@@ -55,6 +55,8 @@ public class CreateCalendarPOTest {
         String startDateValue;
         String endDateValue;
         try {
+            if (mainPage.isCalendarFirstExists())
+                         mainPage.deleteCalendarFirst();
             mainPage.createNewCalendar();
             createCalendarPage.waitUntilNameIsLoaded();
             Name = createCalendarPage.setNotRandomName("CalendarFirst");

@@ -53,12 +53,16 @@ public class MainPage extends Page {
     @FindBy(xpath = "//*[@id='form2']/div/button")   // CREATE A NEW AVAILABLE CALENDAR
             public WebElement linkToNewCalendar;
 
+
     //Settings
     @FindBy(xpath = "//*[@id='socialseti']")   // CREATE A NEW AVAILABLE CALENDAR
             WebElement settingsPanel;
 
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[2]/input")
     WebElement calendarFirstEditButton;
+
+    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[8]/input")
+    WebElement calendarFirstDeleteButton;
 
 
     public MainPage(WebDriver driver) {
@@ -156,9 +160,6 @@ public class MainPage extends Page {
 
     public void clickToEditButtonFirstCal() {
         clickElement(calendarFirstEditButton);
-        EditCalendarPage editCalendarPage;
-        editCalendarPage = PageFactory.initElements(driver, EditCalendarPage.class);
-
     }
 
     public boolean isOnMainPage() {
@@ -170,6 +171,11 @@ public class MainPage extends Page {
     public void createNewCalendar() {
         clickElement(linkToNewCalendar);
     }
+
+    public void deleteCalendarFirst() {
+        clickElement(calendarFirstDeleteButton);
+    }
+
 
     public void openMainPage() {
         driver.get(PAGE_URL);
