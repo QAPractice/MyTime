@@ -56,7 +56,7 @@ public class CreateCalendarPOTest {
         String endDateValue;
         try {
             if (mainPage.isCalendarFirstExists())
-                         mainPage.deleteCalendarFirst();
+                        /* mainPage.deleteCalendarFirst()*/;
             mainPage.createNewCalendar();
             createCalendarPage.waitUntilNameIsLoaded();
             Name = createCalendarPage.setNotRandomName("CalendarFirst");

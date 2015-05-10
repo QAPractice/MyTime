@@ -63,7 +63,10 @@ public class CreateCalendarOlgaPage extends Page {
     public void setStartDate(String month, String day) {
         clickElement(startdateLink);
         selectValueInDropdown(chooseMonth, month);
-
+    }
+    public void setEndDate(String month, String day) {
+        clickElement(enddateLink);
+        selectValueInDropdown(chooseMonth, month);
     }
 
     public void setTimeSlot(){

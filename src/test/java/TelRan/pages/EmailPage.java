@@ -30,6 +30,14 @@ public class EmailPage extends Page {
     @FindBy(xpath = "//input[@value='Send']")
     WebElement sendButton;
 
-
+    public void typeEmail(String email){
+        setElementText(typedAddressField, email);
+    }
+    public void clickAdd (){
+        clickElement(addButton);
+    }
+    public void clickSend (){
+        clickElement(sendButton);
+    }
 
 }
