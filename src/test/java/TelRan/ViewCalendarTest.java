@@ -1,5 +1,7 @@
 package TelRan;
 
+import TelRan.pages.LoginPage;
+import TelRan.pages.MainPage;
 import TelRan.pages.ViewCalendarPage;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
@@ -11,6 +13,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -22,30 +25,40 @@ public class ViewCalendarTest {
     private boolean acceptNextAlert = true;
     private StringBuffer verificationErrors = new StringBuffer();
     private ViewCalendarPage viewCalendarPage;
+    private LoginPage loginPage;
+    private MainPage mainPage;
+
 
     @BeforeMethod(alwaysRun = true)
     public void setUp() {
         driver = new FirefoxDriver();
         wait = new WebDriverWait(driver, 5);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        viewCalendarPage = PageFactory.initElements(driver, ViewCalendarPage.class);
-        viewCalendarPage.openViewCalendarPage();
+        loginPage = PageFactory.initElements(driver, LoginPage.class);
+        mainPage = PageFactory.initElements(driver, MainPage.class);
+        loginPage.openLoginPage();
 
     }
 
     @Test
     public void testViewCalendarPage() {
         try {
+            loginPage.login("romankotlr@gmail.com", "babylon1974");
+            mainPage.waitUntilMainPageIsLoaded();
+            mainPage.clickVievButton();
             viewCalendarPage.waitUntilViewCalendarPageIsLoaded();
             viewCalendarPage.isOnViewCalendarPage();
+
             String day = viewCalendarPage.getDayValue().getText();
-            int prevDay = viewCalendarPage.getDayAsNumber(day);
+            Date prevDay = viewCalendarPage.getDateFromString(day);
             viewCalendarPage.setPrevLocatorValue(prevDay);
+
             viewCalendarPage.clickNextButton();
+
             String day2 = viewCalendarPage.getDayValue().getText();
-            int nextDay = viewCalendarPage.getDayAsNumber(day2);
+            Date nextDay = viewCalendarPage.getDateFromString(day2);
             viewCalendarPage.setNextLocatorValue(nextDay);
-            boolean isNextDayGood = prevDay < nextDay;
+            boolean isNextDayGood = viewCalendarPage.getPrevLocatorValue().before(viewCalendarPage.getNextLocatorValue()); //prevDay.before(nextDay);
             Assert.assertTrue(isNextDayGood);
 
         } catch (Exception e) {
