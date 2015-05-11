@@ -12,121 +12,171 @@ import java.io.IOException;
  */
 public class EditCalendarPage extends Page{
 
-        @FindBy(id = "td6s2")
-        public WebElement td6s2;
         @FindBy(id="saveMatt")
         WebElement saveButton;
+
         @FindBy(id="mRepeat")
         WebElement repeatField;
+
         @FindBy(id="timeSlot")
         WebElement timeSlotLink;
+
         @FindBy(id="startDate")
         WebElement startDateLink;
+
         @FindBy(id="endDate")
         WebElement endDateLink;
+
         @FindBy (xpath = "//div[@id='ui-datepicker-div']/table/tbody")
         WebElement chooseStartDate;
+
         @FindBy (xpath = "//div[@id='ui-datepicker-div']/table/tbody")
         WebElement chooseEndDate;
+
         @FindBy(xpath = "//select[@class='ui-datepicker-month'][@data-handler='selectMonth']")
         WebElement chooseMonth;
+
         @FindBy(xpath = "//select[@id='timeSlot'][@name='timeSlot']")
         WebElement choosetimeSlot;
+
+
         @FindBy(xpath = "//*[@id='first']/div[1]/p[contains(text(),'CalendarFirst')]")
         WebElement  CalendarFirstEditPage;
+
         @FindBy(id="next")
         WebElement nextButton;
+
         @FindBy(id="back")
         WebElement backButton;
+
         @FindBy(xpath = "//*[@id='first']/div[1]/p")
         WebElement lableCalendarName;
+
         @FindBy(id = "mattName")
         WebElement calendarNameField;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/div/div/span")
+
+        @FindBy(xpath ="//*[@id='ui-datepicker-div']/div/div/span")
         WebElement setYear;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/div/a[2]/span")
+
+        @FindBy(xpath ="//*[@id='ui-datepicker-div']/div/a[2]/span")
         WebElement yearStepUp;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/div/a[1]/span")
+
+        @FindBy(xpath ="//*[@id='ui-datepicker-div']/div/a[1]/span")
         WebElement yearStepDown;
-        @FindBy(xpath = "//*[@id='td0s0']")
+
+        @FindBy(xpath =  "//*[@id='td0s0']")
         WebElement firstCell;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'1') and not( contains(text(),'10') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'1') and not( contains(text(),'10') ) " +
                 "and not( contains(text(),'11') ) and not( contains(text(),'12') ) and not( contains(text(),'13') )" +
                 "and not( contains(text(),'14') ) and not( contains(text(),'15') ) and not( contains(text(),'16') ) " +
                 "and not( contains(text(),'17') ) and not( contains(text(),'18') )and not( contains(text(),'19') )" +
                 "and not( contains(text(),'21') ) and not( contains(text(),'31') ) ]")
         WebElement dayChooser_1;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'2') and not( contains(text(),'12') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'2') and not( contains(text(),'12') ) " +
                 "and not( contains(text(),'20') ) and not( contains(text(),'21') ) and not( contains(text(),'22') )" +
                 "and not( contains(text(),'23') ) and not( contains(text(),'24') ) and not( contains(text(),'25') ) " +
                 "and not( contains(text(),'26') ) and not( contains(text(),'27') )and not( contains(text(),'28') )" +
                 "and not( contains(text(),'29') )  ]")
         WebElement dayChooser_2;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'3') and not( contains(text(),'13') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'3') and not( contains(text(),'13') ) " +
                 "and not( contains(text(),'23') ) and not( contains(text(),'30') ) and not( contains(text(),'31') ) ]")
         WebElement dayChooser_3;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'4') and not( contains(text(),'14') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'4') and not( contains(text(),'14') ) " +
                 "and not( contains(text(),'24') )  ]")
         WebElement dayChooser_4;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'5') and not( contains(text(),'15') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'5') and not( contains(text(),'15') ) " +
                 "and not( contains(text(),'25') )  ]")
         WebElement dayChooser_5;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'6') and not( contains(text(),'16') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'6') and not( contains(text(),'16') ) " +
                 "and not( contains(text(),'26') )  ]")
         WebElement dayChooser_6;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'7') and not( contains(text(),'17') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'7') and not( contains(text(),'17') ) " +
                 "and not( contains(text(),'27') )  ]")
         WebElement dayChooser_7;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'8') and not( contains(text(),'18') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'8') and not( contains(text(),'18') ) " +
                 "and not( contains(text(),'28') )  ]")
         WebElement dayChooser_8;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'9') and not( contains(text(),'19') ) " +
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'9') and not( contains(text(),'19') ) " +
                 "and not( contains(text(),'29') )  ]")
         WebElement dayChooser_9;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'10')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'10')]")
         WebElement dayChooser_10;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'11')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'11')]")
         WebElement dayChooser_11;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'12')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'12')]")
         WebElement dayChooser_12;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'13')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'13')]")
         WebElement dayChooser_13;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'14')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'14')]")
         WebElement dayChooser_14;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'15')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'15')]")
         WebElement dayChooser_15;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'16')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'16')]")
         WebElement dayChooser_16;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'17')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'17')]")
         WebElement dayChooser_17;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'18')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'18')]")
         WebElement dayChooser_18;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'19')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'19')]")
         WebElement dayChooser_19;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'20')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'20')]")
         WebElement dayChooser_20;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'21')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'21')]")
         WebElement dayChooser_21;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'22')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'22')]")
         WebElement dayChooser_22;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'23')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'23')]")
         WebElement dayChooser_23;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'24')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'24')]")
         WebElement dayChooser_24;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'25')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'25')]")
         WebElement dayChooser_25;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'26')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'26')]")
         WebElement dayChooser_26;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'27')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'27')]")
         WebElement dayChooser_27;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'28')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'28')]")
         WebElement dayChooser_28;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'29')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'29')]")
         WebElement dayChooser_29;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'30')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'30')]")
         WebElement dayChooser_30;
-        @FindBy(xpath = "//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'31')]")
+
+        @FindBy(xpath="//*[@id='ui-datepicker-div']/table/tbody//a[contains(text(),'31')]")
         WebElement dayChooser_31;
+
+        @FindBy(id = "td6s2")
+        public WebElement td6s2;
 
         public EditCalendarPage(WebDriver driver){
 
@@ -166,14 +216,10 @@ public class EditCalendarPage extends Page{
                 currentYear = setYear.getAttribute("textContent");
                 int currentYearNumber = Integer.parseInt(currentYear);
                 // System.out.println("setYear" + currentYearNumber);
-                if (year - currentYearNumber > 0)
-                        for (int i = 1; i <= (year - currentYearNumber) * 12; i++) {
-                                clickElement(yearStepUp);
-                        }
-                if (year - currentYearNumber < 0)
-                        for (int i = 1; i <= (currentYearNumber - year) * 12; i++) {
-                                clickElement(yearStepDown);
-                        }
+                if( year - currentYearNumber > 0 )
+                        for (int i = 1;  i <= (year - currentYearNumber)*12; i++){  clickElement(yearStepUp); }
+                if( year - currentYearNumber < 0 )
+                        for (int i = 1;  i <= (currentYearNumber - year)*12; i++){  clickElement(yearStepDown); }
 
                 selectValueInDropdown(chooseMonth, month); // Here we are choosing month
 
@@ -276,9 +322,9 @@ public class EditCalendarPage extends Page{
                                 return null;
                         }
                 }
-                clickElement(dayChooser);
-                return startDateLink.getAttribute("value");
-        }
+                        clickElement(dayChooser);
+                        return startDateLink.getAttribute("value");
+                }
 
 
 

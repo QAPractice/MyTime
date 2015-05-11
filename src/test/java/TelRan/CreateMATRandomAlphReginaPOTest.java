@@ -3,15 +3,20 @@ package TelRan;
 import TelRan.pages.CreateCalendarOlgaPage;
 import TelRan.pages.LoginPage;
 import TelRan.pages.MainPage;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
+import static org.apache.commons.lang3.RandomStringUtils.random;
 import static org.testng.AssertJUnit.assertTrue;
 
 /**

@@ -9,6 +9,10 @@ import org.openqa.selenium.support.PageFactory;
  * Created by Л on 5/2/2015.
  */
 public class EmailPage extends Page {
+    public EmailPage(WebDriver driver) {
+        super(driver);
+        PageFactory.initElements(driver, this);
+    }
     @FindBy(xpath = "//*[@id='availableEmails']")
     WebElement availableEmailsField;
     @FindBy(xpath = "//*[@id='sendEmails']")
@@ -26,20 +30,13 @@ public class EmailPage extends Page {
     @FindBy(xpath = "//input[@value='Send']")
     WebElement sendButton;
 
-    public EmailPage(WebDriver driver) {
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
-
-    public void typeEmail(String email) {
+    public void typeEmail(String email){
         setElementText(typedAddressField, email);
     }
-
-    public void clickAdd() {
+    public void clickAdd (){
         clickElement(addButton);
     }
-
-    public void clickSend() {
+    public void clickSend (){
         clickElement(sendButton);
     }
 

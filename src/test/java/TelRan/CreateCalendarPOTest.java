@@ -33,8 +33,14 @@ public class CreateCalendarPOTest {
         wait = new WebDriverWait(driver, 5);
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         createCalendarPage = PageFactory.initElements(driver,CreateCalendarPage.class);
-        // createCalendarPage.openLoginPage();
-        mainPage = PageFactory.initElements(driver, MainPage.class);
+        editCalendarPage = PageFactory.initElements(driver, EditCalendarPage.class);
+        loginPage.openLoginPage();
+        try {
+            loginPage.login("telrantests@yahoo.com", "12345.com");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        mainPage.waitUntilMainPageIsLoaded();
     }
 
 
@@ -45,12 +51,11 @@ public class CreateCalendarPOTest {
             mainPage.openMainPage();
             mainPage.createNewCalendar();
             createCalendarPage.waitUntilNameIsLoaded();
-            Name = createCalendarPage.setRandomName(1);
-            createCalendarPage.setStartDate(2012, "5", 8);
-            createCalendarPage.setEndDate(2017, "7", 2);
+            Name = createCalendarPage.setNotRandomName("CalendarFirst");
+            startDateValue = createCalendarPage.setStartDate(2012, "5", 8);
+            endDateValue = createCalendarPage.setEndDate( 2017, "7", 2 );
             createCalendarPage.setTimeSlot("30");
-            //           assertTrue(createCalendarPage.IsCellGreenAfterClick());
-            //           assertTrue(createCalendarPage.IsCellColorChangedAfterClick() );
+            createCalendarPage.clickFirstCell( );
             createCalendarPage.clickSaveButton();
             mainPage.waitUntilMainPageIsLoaded();
             assertTrue(mainPage.isOnMainPage());
