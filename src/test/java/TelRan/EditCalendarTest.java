@@ -50,9 +50,9 @@ public class EditCalendarTest {
     public void TestEditPageSuccess() {
         try {
             editCalendarPage.waitUntilEditPageIsLoaded();
-            editCalendarPage.checkCalendarNameIsCorrect("FirstCalendar");
-            editCalendarPage.setStartDate("5", "11");
-            editCalendarPage.setEndDate("8","8");
+            editCalendarPage.checkCalendarNameIsCorrect("CalendarFirst");
+            editCalendarPage.setStartDate(2015, "5", 11);
+            //  editCalendarPage.setEndDate("8","8");
             editCalendarPage.setTimeSlot("30");
             editCalendarPage.setRepeatField();
             editCalendarPage.saveCalendar();

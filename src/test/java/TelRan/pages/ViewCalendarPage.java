@@ -6,14 +6,17 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 /**
  * Created by Marina on 5/2/2015.
  */
 public class ViewCalendarPage extends Page {
 
-    public int prevLocatorValue;
-    public int nextLocatorValue;
+    public Date prevLocatorValue;
+    public Date nextLocatorValue;
     @FindBy (id = "mattName")
     WebElement calendarnameField;
     @FindBy (id = "next")
@@ -27,7 +30,6 @@ public class ViewCalendarPage extends Page {
 
     public ViewCalendarPage(WebDriver driver) {
         super(driver);
-        this.PAGE_URL = "http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/viewMatt?table=993&username=romankotlr%40gmail.com&993.x=16&993.y=17";
         PageFactory.initElements(driver, this);
     }
 
@@ -78,19 +80,19 @@ public class ViewCalendarPage extends Page {
         return calendarnameField;
     }
 
-    public int getPrevLocatorValue() {
+    public Date getPrevLocatorValue() {
         return prevLocatorValue;
     }
 
-    public void setPrevLocatorValue(int prevLocatorValue) {
+    public void setPrevLocatorValue(Date prevLocatorValue) {
         this.prevLocatorValue = prevLocatorValue;
     }
 
-    public int getNextLocatorValue() {
+    public Date getNextLocatorValue() {
         return nextLocatorValue;
     }
 
-    public void setNextLocatorValue(int nextLocatorValue) {
+    public void setNextLocatorValue(Date nextLocatorValue) {
         this.nextLocatorValue = nextLocatorValue;
 
     }
@@ -102,4 +104,11 @@ public class ViewCalendarPage extends Page {
     public void setDayValue(WebElement dayValue) {
         this.dayValue = dayValue;
     }
+
+    public Date getDateFromString(String dateStr) throws ParseException {
+        SimpleDateFormat formatter = new SimpleDateFormat("dd.MMM");
+        Date date = formatter.parse(dateStr);
+        return date;
+    }
+
 }

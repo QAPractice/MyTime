@@ -1,5 +1,7 @@
 package TelRan.pages;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -14,6 +16,8 @@ public class MainPage extends Page {
 
     //buttons Sharing
 
+    @FindBy(xpath = "//*[@id='form2']/div/button")   // CREATE A NEW AVAILABLE CALENDAR
+    public WebElement linkToNewCalendar;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[3]/a")
     WebElement calendarFirstshareButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[4]/td[2]/input")
@@ -22,10 +26,8 @@ public class MainPage extends Page {
     WebElement calendarFirstshareOnGoogleButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[4]/td[4]/a")
     WebElement calendarFirstshareOnFacebookButton;
-
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'CalendarFirst')]/input")  // REMOVE
             WebElement calendarFirstRemoveButton;
-
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4486432')]/../../tr[3]/td[3]/a")
     WebElement digitshareButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4486432')]/../../tr[4]/td[2]/input")
@@ -34,10 +36,8 @@ public class MainPage extends Page {
     WebElement digitshareOnGoogleButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4486432')]/../../tr[4]/td[4]/a")
     WebElement digitshareOnFacebookButton;
-
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'4486432')]/input")  // REMOVE
             WebElement calendarDigitRemoveButton;
-
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4482Second')]/../../tr[3]/td[3]/a")
     WebElement digitLettershareButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4482Second')]/../../tr[4]/td[2]/input")
@@ -46,14 +46,8 @@ public class MainPage extends Page {
     WebElement digitLettershareOnGoogleButton;
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'4482Second')]/../../tr[4]/td[4]/a")
     WebElement digitLettershareOnFacebookButton;
-
     @FindBy(xpath = "//*[@id='placetable']//tr[3]/td[contains(text(),'4482Second')]/input")  // REMOVE
             WebElement calendarSecondRemoveButton;
-
-    @FindBy(xpath = "//*[@id='form2']/div/button")   // CREATE A NEW AVAILABLE CALENDAR
-            public WebElement linkToNewCalendar;
-
-
     //Settings
     @FindBy(xpath = "//*[@id='socialseti']")   // CREATE A NEW AVAILABLE CALENDAR
             WebElement settingsPanel;
@@ -61,10 +55,20 @@ public class MainPage extends Page {
     @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[2]/input")
     WebElement calendarFirstEditButton;
 
-    @FindBy(xpath = "//*[@id='placetable']//tr[1]/td[contains(text(),'CalendarFirst')]/../../tr[3]/td[8]/input")
-    WebElement calendarFirstDeleteButton;
+    @FindBy(xpath = "//*[@id='placetable']/table[1]/tbody/tr[3]/td[7]/a/img")
+    WebElement collaboration;
 
+    @FindBy(xpath = "//*[@id='collab1009']/td[6]/input")
+    WebElement sendInvitation;
 
+    @FindBy(xpath = "//*[@id='log']/span[5]/button")
+    WebElement invitationButton;
+
+    @FindBy(xpath = "//*[@id='placetable']/table[1]/tbody/tr[1]/td")
+    WebElement createdCalendar;
+
+    @FindBy(xpath = "//*[@id='placetable']/table[1]/tbody/tr[3]/td[1]/input")
+    WebElement viewButton;
     public MainPage(WebDriver driver) {
         super(driver);
  //       this.PAGE_URL ="http://ec2-54-166-51-117.compute-1.amazonaws.com:8080/myavailabletime/home?name=rilopatin%40gmail.com&password=12345&mergedimage_2=";
@@ -160,6 +164,9 @@ public class MainPage extends Page {
 
     public void clickToEditButtonFirstCal() {
         clickElement(calendarFirstEditButton);
+        EditCalendarPage editCalendarPage;
+        editCalendarPage = PageFactory.initElements(driver, EditCalendarPage.class);
+
     }
 
     public boolean isOnMainPage() {
@@ -172,14 +179,37 @@ public class MainPage extends Page {
         clickElement(linkToNewCalendar);
     }
 
-    public void deleteCalendarFirst() {
-        clickElement(calendarFirstDeleteButton);
-    }
-
-
     public void openMainPage() {
         driver.get(PAGE_URL);
     }
 
+    public boolean isCalendarNamePresents(String name) {
+        try {
+            driver.findElement(By.xpath("//*[contains(text(),\"" + name + "\")]"));
+            return true;
+        } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void clickCollaboration() {
+        clickElement(collaboration);
+    }
+
+    public void clickSendInvitation() {
+        clickElement(sendInvitation);
+    }
+
+    public void clickInvitation() {
+        clickElement(invitationButton);
+    }
+
+    public String getCalendarName() {
+        return createdCalendar.getText();
+    }
+
+    public void clickVievButton() {
+        clickElement(viewButton);
+    }
 }
  
